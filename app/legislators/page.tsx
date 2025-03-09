@@ -122,7 +122,7 @@ export default function LegislatorsDirectory() {
   ];
 
   // Colores para los partidos políticos
-  const partyColors = {
+  const partyColors: { [key: string]: string } = {
     "MORENA": "bg-[#8B0000]",
     "PAN": "bg-[#0047AB]",
     "PRI": "bg-[#006847]",
