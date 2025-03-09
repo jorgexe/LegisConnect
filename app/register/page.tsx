@@ -51,16 +51,16 @@ export default function RegisterPage() {
     // Validate current step
     if (registrationStep === 1) {
       if (!email || !password || passwordStrength < 50) {
-        setError("Please complete all fields with a strong password")
+        setError("Por favor, complete todos los campos con una contraseña segura")
         return
       }
     } else if (registrationStep === 2) {
       if (userType === "citizen" && (!firstName || !lastName)) {
-        setError("Please provide your name")
+        setError("Por favor, proporcione su nombre")
         return
       }
       if (userType === "organization" && !orgName) {
-        setError("Please provide your organization name")
+        setError("Por favor, proporcione el nombre de su organización")
         return
       }
     }
@@ -84,7 +84,7 @@ export default function RegisterPage() {
 
     // Validate registration
     if (!termsAccepted) {
-      setError("You must accept the terms and conditions")
+      setError("Debe aceptar los términos y condiciones")
       setIsLoading(false)
       return
     }
@@ -96,7 +96,7 @@ export default function RegisterPage() {
 
       setRegistrationComplete(true)
     } catch (err) {
-      setError("Registration failed. Please try again.")
+      setError("El registro falló. Por favor, inténtelo de nuevo.")
     } finally {
       setIsLoading(false)
     }
@@ -117,22 +117,20 @@ export default function RegisterPage() {
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <Check className="h-6 w-6 text-green-600" />
               </div>
-              <CardTitle className="text-2xl font-bold text-center">Registration Successful</CardTitle>
-              <CardDescription className="text-center">Your account has been created successfully</CardDescription>
+              <CardTitle className="text-2xl font-bold text-center">Registro Exitoso</CardTitle>
+              <CardDescription className="text-center">Tu cuenta ha sido creada exitosamente</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-center text-sm text-gray-500">
-                We've sent a confirmation email to <span className="font-medium">{email}</span>. Please check your inbox
-                and verify your email to activate your account.
+                Hemos enviado un correo electrónico de confirmación a <span className="font-medium">{email}</span>. Por favor, revisa tu bandeja de entrada y verifica tu correo electrónico para activar tu cuenta.
               </p>
 
               {userType === "legislator" && (
                 <Alert>
                   <Info className="h-4 w-4" />
-                  <AlertTitle>Verification Required</AlertTitle>
+                  <AlertTitle>Verificación Requerida</AlertTitle>
                   <AlertDescription>
-                    As a legislator, your account requires additional verification. Our team will contact you within 1-2
-                    business days to complete the verification process.
+                    Como legislador, tu cuenta requiere verificación adicional. Nuestro equipo se pondrá en contacto contigo dentro de 1-2 días hábiles para completar el proceso de verificación.
                   </AlertDescription>
                 </Alert>
               )}
@@ -142,24 +140,24 @@ export default function RegisterPage() {
                 className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
                 onClick={() => (window.location.href = "/login")}
               >
-                Proceed to Login
+                Ir a Iniciar Sesión
               </Button>
             </CardFooter>
           </Card>
         ) : (
           <Card className="w-full max-w-xl">
             <CardHeader className="space-y-1">
-              <CardTitle className="text-2xl font-bold text-center">Create an account</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">Crear una cuenta</CardTitle>
               <CardDescription className="text-center">
-                Join LegisConnect to participate in the legislative process
+                Únete a LegisConnect para participar en el proceso legislativo
               </CardDescription>
 
               {/* Progress indicator */}
               <div className="mt-4">
                 <div className="flex justify-between mb-1 text-xs">
-                  <span>Step {registrationStep} of 3</span>
+                  <span>Paso {registrationStep} de 3</span>
                   <span>
-                    {registrationStep === 1 ? "Account" : registrationStep === 2 ? "Profile" : "Verification"}
+                    {registrationStep === 1 ? "Cuenta" : registrationStep === 2 ? "Perfil" : "Verificación"}
                   </span>
                 </div>
                 <Progress value={registrationStep * 33.33} className="h-2" />
@@ -179,13 +177,13 @@ export default function RegisterPage() {
                 {registrationStep === 1 && (
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label htmlFor="email">Correo electrónico</Label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
                           id="email"
                           type="email"
-                          placeholder="name@example.com"
+                          placeholder="nombre@ejemplo.com"
                           className="pl-10"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -195,7 +193,7 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="password">Password</Label>
+                      <Label htmlFor="password">Contraseña</Label>
                       <div className="relative">
                         <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                         <Input
@@ -219,22 +217,22 @@ export default function RegisterPage() {
                           ) : (
                             <Eye className="h-4 w-4 text-gray-500" />
                           )}
-                          <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                          <span className="sr-only">{showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}</span>
                         </Button>
                       </div>
 
                       {/* Password strength meter */}
                       <div className="space-y-1">
                         <div className="flex justify-between text-xs">
-                          <span>Password strength</span>
+                          <span>Fortaleza de la contraseña</span>
                           <span>
                             {passwordStrength < 25
-                              ? "Weak"
+                              ? "Débil"
                               : passwordStrength < 50
-                                ? "Fair"
+                                ? "Regular"
                                 : passwordStrength < 75
-                                  ? "Good"
-                                  : "Strong"}
+                                  ? "Buena"
+                                  : "Fuerte"}
                           </span>
                         </div>
                         <div className="h-1.5 w-full bg-gray-200 rounded-full">
@@ -256,25 +254,25 @@ export default function RegisterPage() {
                             <span
                               className={`inline-block w-3 h-3 mr-2 rounded-full ${password.length >= 8 ? "bg-green-500" : "bg-gray-300"}`}
                             ></span>
-                            At least 8 characters
+                            Al menos 8 caracteres
                           </li>
                           <li className="flex items-center">
                             <span
                               className={`inline-block w-3 h-3 mr-2 rounded-full ${/[A-Z]/.test(password) ? "bg-green-500" : "bg-gray-300"}`}
                             ></span>
-                            At least one uppercase letter
+                            Al menos una letra mayúscula
                           </li>
                           <li className="flex items-center">
                             <span
                               className={`inline-block w-3 h-3 mr-2 rounded-full ${/[0-9]/.test(password) ? "bg-green-500" : "bg-gray-300"}`}
                             ></span>
-                            At least one number
+                            Al menos un número
                           </li>
                           <li className="flex items-center">
                             <span
                               className={`inline-block w-3 h-3 mr-2 rounded-full ${/[^A-Za-z0-9]/.test(password) ? "bg-green-500" : "bg-gray-300"}`}
                             ></span>
-                            At least one special character
+                            Al menos un carácter especial
                           </li>
                         </ul>
                       </div>
@@ -286,7 +284,7 @@ export default function RegisterPage() {
                 {registrationStep === 2 && (
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label>I am registering as:</Label>
+                      <Label>Me registro como:</Label>
                       <RadioGroup
                         defaultValue={userType}
                         className="grid grid-cols-3 gap-4"
@@ -299,7 +297,7 @@ export default function RegisterPage() {
                             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 hover:border-[#C8A96A] peer-data-[state=checked]:border-[#C8A96A] peer-data-[state=checked]:bg-[#C8A96A]/10"
                           >
                             <User className="mb-2 h-6 w-6" />
-                            <span className="text-sm font-medium">Citizen</span>
+                            <span className="text-sm font-medium">Ciudadano</span>
                           </Label>
                         </div>
 
@@ -310,7 +308,7 @@ export default function RegisterPage() {
                             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 hover:border-[#C8A96A] peer-data-[state=checked]:border-[#C8A96A] peer-data-[state=checked]:bg-[#C8A96A]/10"
                           >
                             <Users className="mb-2 h-6 w-6" />
-                            <span className="text-sm font-medium">Legislator</span>
+                            <span className="text-sm font-medium">Legislador</span>
                           </Label>
                         </div>
 
@@ -321,7 +319,7 @@ export default function RegisterPage() {
                             className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-white p-4 hover:bg-gray-50 hover:border-[#C8A96A] peer-data-[state=checked]:border-[#C8A96A] peer-data-[state=checked]:bg-[#C8A96A]/10"
                           >
                             <Building className="mb-2 h-6 w-6" />
-                            <span className="text-sm font-medium">Organization</span>
+                            <span className="text-sm font-medium">Organización</span>
                           </Label>
                         </div>
                       </RadioGroup>
@@ -330,7 +328,7 @@ export default function RegisterPage() {
                         <Alert className="mt-2 bg-yellow-50 border-yellow-200 text-yellow-800">
                           <Info className="h-4 w-4" />
                           <AlertDescription>
-                            Legislator accounts require verification. You will need to provide additional documentation.
+                            Las cuentas de legisladores requieren verificación. Necesitará proporcionar documentación adicional.
                           </AlertDescription>
                         </Alert>
                       )}
@@ -339,7 +337,7 @@ export default function RegisterPage() {
                     {(userType === "citizen" || userType === "legislator") && (
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="first-name">First name</Label>
+                          <Label htmlFor="first-name">Nombre</Label>
                           <Input
                             id="first-name"
                             value={firstName}
@@ -348,7 +346,7 @@ export default function RegisterPage() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="last-name">Last name</Label>
+                          <Label htmlFor="last-name">Apellido</Label>
                           <Input
                             id="last-name"
                             value={lastName}
@@ -361,10 +359,10 @@ export default function RegisterPage() {
 
                     {userType === "organization" && (
                       <div className="space-y-2">
-                        <Label htmlFor="org-name">Organization name</Label>
+                        <Label htmlFor="org-name">Nombre de la organización</Label>
                         <Input
                           id="org-name"
-                          placeholder="Organization name"
+                          placeholder="Nombre de la organización"
                           value={orgName}
                           onChange={(e) => setOrgName(e.target.value)}
                           required
@@ -378,19 +376,19 @@ export default function RegisterPage() {
                 {registrationStep === 3 && (
                   <div className="space-y-4">
                     <div className="rounded-md border p-4 bg-gray-50">
-                      <div className="text-sm font-medium mb-2">Account Summary</div>
+                      <div className="text-sm font-medium mb-2">Resumen de Cuenta</div>
                       <dl className="space-y-1 text-sm">
                         <div className="flex">
-                          <dt className="w-1/3 font-medium text-gray-500">Email:</dt>
+                          <dt className="w-1/3 font-medium text-gray-500">Correo electrónico:</dt>
                           <dd>{email}</dd>
                         </div>
                         <div className="flex">
-                          <dt className="w-1/3 font-medium text-gray-500">Account Type:</dt>
+                          <dt className="w-1/3 font-medium text-gray-500">Tipo de Cuenta:</dt>
                           <dd className="capitalize">{userType}</dd>
                         </div>
                         {(userType === "citizen" || userType === "legislator") && (
                           <div className="flex">
-                            <dt className="w-1/3 font-medium text-gray-500">Name:</dt>
+                            <dt className="w-1/3 font-medium text-gray-500">Nombre:</dt>
                             <dd>
                               {firstName} {lastName}
                             </dd>
@@ -398,7 +396,7 @@ export default function RegisterPage() {
                         )}
                         {userType === "organization" && (
                           <div className="flex">
-                            <dt className="w-1/3 font-medium text-gray-500">Organization:</dt>
+                            <dt className="w-1/3 font-medium text-gray-500">Organización:</dt>
                             <dd>{orgName}</dd>
                           </div>
                         )}
@@ -406,22 +404,17 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label className="text-base">Terms and Conditions</Label>
+                      <Label className="text-base">Términos y Condiciones</Label>
                       <div className="rounded-md border p-4 h-40 overflow-y-auto text-sm text-gray-700">
-                        <h4 className="font-medium mb-2">Terms of Use for LegisConnect</h4>
+                        <h4 className="font-medium mb-2">Términos de Uso para LegisConnect</h4>
                         <p className="mb-2">
-                          By creating an account on LegisConnect, you agree to these Terms of Use and our Privacy
-                          Policy. LegisConnect is a platform designed to connect citizens and legislators, promoting
-                          transparency and civic engagement in the legislative process.
+                          Al crear una cuenta en LegisConnect, acepta estos Términos de Uso y nuestra Política de Privacidad. LegisConnect es una plataforma diseñada para conectar a ciudadanos y legisladores, promoviendo la transparencia y la participación cívica en el proceso legislativo.
                         </p>
                         <p className="mb-2">
-                          Users must provide accurate information and maintain the confidentiality of their account.
-                          Content posted must be respectful, lawful, and on-topic. LegisConnect reserves the right to
-                          moderate content and suspend accounts that violate these terms.
+                          Los usuarios deben proporcionar información precisa y mantener la confidencialidad de su cuenta. El contenido publicado debe ser respetuoso, lícito y relevante. LegisConnect se reserva el derecho de moderar el contenido y suspender las cuentas que violen estos términos.
                         </p>
                         <p>
-                          For legislator accounts, additional verification is required to ensure the authenticity of
-                          representation. All data is processed according to our Privacy Policy and applicable laws.
+                          Para las cuentas de legisladores, se requiere verificación adicional para garantizar la autenticidad de la representación. Todos los datos se procesan de acuerdo con nuestra Política de Privacidad y las leyes aplicables.
                         </p>
                       </div>
                     </div>
@@ -438,13 +431,13 @@ export default function RegisterPage() {
                           htmlFor="terms"
                           className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                          I agree to the{" "}
+                          Acepto los{" "}
                           <Link href="/terms" className="text-[#0D3B39] underline hover:text-[#0D3B39]/80">
-                            terms of service
+                            términos de servicio
                           </Link>{" "}
-                          and{" "}
+                          y la{" "}
                           <Link href="/privacy" className="text-[#0D3B39] underline hover:text-[#0D3B39]/80">
-                            privacy policy
+                            política de privacidad
                           </Link>
                         </label>
                       </div>
@@ -456,7 +449,7 @@ export default function RegisterPage() {
                 <div className="flex justify-between mt-6">
                   {registrationStep > 1 ? (
                     <Button type="button" variant="outline" onClick={handlePrevStep}>
-                      Previous
+                      Anterior
                     </Button>
                   ) : (
                     <div></div> // Empty div for spacing
@@ -468,7 +461,7 @@ export default function RegisterPage() {
                       className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
                       onClick={handleNextStep}
                     >
-                      Next
+                      Siguiente
                     </Button>
                   ) : (
                     <Button
@@ -476,7 +469,7 @@ export default function RegisterPage() {
                       className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
                       disabled={isLoading}
                     >
-                      {isLoading ? "Creating account..." : "Create account"}
+                      {isLoading ? "Creando cuenta..." : "Crear cuenta"}
                     </Button>
                   )}
                 </div>
@@ -484,9 +477,9 @@ export default function RegisterPage() {
             </CardContent>
             <CardFooter className="flex flex-col space-y-4">
               <div className="text-center text-sm">
-                Already have an account?{" "}
+                ¿Ya tienes una cuenta?{" "}
                 <Link href="/login" className="text-[#0D3B39] underline hover:text-[#0D3B39]/80">
-                  Sign in
+                  Iniciar sesión
                 </Link>
               </div>
             </CardFooter>

@@ -21,84 +21,84 @@ import {
 } from "@/components/ui/pagination"
 
 export default function ForumsPage() {
-  // Sample categories for filtering
+  // Categorías de muestra para filtrado
   const categories = [
-    "Environment",
-    "Education",
-    "Healthcare",
-    "Economy",
-    "Infrastructure",
-    "Public Safety",
-    "Technology",
-    "Agriculture",
+    "Medio Ambiente",
+    "Educación",
+    "Salud",
+    "Economía",
+    "Infraestructura",
+    "Seguridad Pública",
+    "Tecnología",
+    "Agricultura",
   ]
 
-  // Sample forum topics
+  // Temas del foro de muestra
   const forumTopics = [
     {
       id: 1,
-      title: "Climate Change Legislation: What's Working?",
-      category: "Environment",
-      author: "Maria Garcia",
-      authorType: "Legislator",
+      title: "Legislación sobre Cambio Climático: ¿Qué está funcionando?",
+      category: "Medio Ambiente",
+      author: "María García",
+      authorType: "Legislador",
       replies: 42,
       views: 1250,
-      lastActivity: "2 hours ago",
+      lastActivity: "hace 2 horas",
       isHot: true,
     },
     {
       id: 2,
-      title: "Education Budget Priorities for 2023",
-      category: "Education",
-      author: "John Smith",
-      authorType: "Citizen",
+      title: "Prioridades del Presupuesto Educativo para 2023",
+      category: "Educación",
+      author: "Juan Pérez",
+      authorType: "Ciudadano",
       replies: 28,
       views: 876,
-      lastActivity: "5 hours ago",
+      lastActivity: "hace 5 horas",
       isHot: false,
     },
     {
       id: 3,
-      title: "Healthcare Access in Rural Communities",
-      category: "Healthcare",
-      author: "Dr. Laura Johnson",
-      authorType: "Organization",
+      title: "Acceso a la Salud en Comunidades Rurales",
+      category: "Salud",
+      author: "Dra. Laura Jiménez",
+      authorType: "Organización",
       replies: 35,
       views: 1120,
-      lastActivity: "1 day ago",
+      lastActivity: "hace 1 día",
       isHot: true,
     },
     {
       id: 4,
-      title: "Public Transportation Expansion Debate",
-      category: "Infrastructure",
-      author: "Carlos Rodriguez",
-      authorType: "Citizen",
+      title: "Debate sobre la Ampliación del Transporte Público",
+      category: "Infraestructura",
+      author: "Carlos Rodríguez",
+      authorType: "Ciudadano",
       replies: 19,
       views: 645,
-      lastActivity: "2 days ago",
+      lastActivity: "hace 2 días",
       isHot: false,
     },
     {
       id: 5,
-      title: "Tax Reform Proposals: Pros and Cons",
-      category: "Economy",
-      author: "Sen. Robert Chen",
-      authorType: "Legislator",
+      title: "Propuestas de Reforma Fiscal: Pros y Contras",
+      category: "Economía",
+      author: "Sen. Roberto Chen",
+      authorType: "Legislador",
       replies: 56,
       views: 1890,
-      lastActivity: "6 hours ago",
+      lastActivity: "hace 6 horas",
       isHot: true,
     },
     {
       id: 6,
-      title: "Digital Privacy Legislation Discussion",
-      category: "Technology",
-      author: "Tech Rights Coalition",
-      authorType: "Organization",
+      title: "Discusión sobre Legislación de Privacidad Digital",
+      category: "Tecnología",
+      author: "Coalición por los Derechos Digitales",
+      authorType: "Organización",
       replies: 31,
       views: 980,
-      lastActivity: "3 days ago",
+      lastActivity: "hace 3 días",
       isHot: false,
     },
   ]
@@ -109,13 +109,13 @@ export default function ForumsPage() {
         <div className="container">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-3xl font-bold mb-4">Debate Forums</h1>
+              <h1 className="text-3xl font-bold mb-4">Foros de Debate</h1>
               <p className="text-lg opacity-90 max-w-2xl">
-                Engage in meaningful discussions about legislative issues and proposals.
+                Participa en discusiones significativas sobre temas y propuestas legislativas.
               </p>
             </div>
             <Button className="mt-6 md:mt-0 bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
-              <Plus className="mr-2 h-4 w-4" /> Create New Topic
+              <Plus className="mr-2 h-4 w-4" /> Crear Nuevo Tema
             </Button>
           </div>
         </div>
@@ -127,26 +127,26 @@ export default function ForumsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
-                  <Filter className="mr-2 h-5 w-5" /> Filters
+                  <Filter className="mr-2 h-5 w-5" /> Filtros
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium mb-1 block">Search</label>
+                  <label className="text-sm font-medium mb-1 block">Buscar</label>
                   <div className="relative">
                     <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-                    <Input placeholder="Search forums..." className="pl-8" />
+                    <Input placeholder="Buscar en foros..." className="pl-8" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium mb-1 block">Category</label>
+                  <label className="text-sm font-medium mb-1 block">Categoría</label>
                   <Select>
                     <SelectTrigger>
-                      <SelectValue placeholder="All Categories" />
+                      <SelectValue placeholder="Todas las Categorías" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All Categories</SelectItem>
+                      <SelectItem value="all">Todas las Categorías</SelectItem>
                       {categories.map((category) => (
                         <SelectItem key={category} value={category.toLowerCase()}>
                           {category}
@@ -157,42 +157,42 @@ export default function ForumsPage() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium mb-1 block">Author Type</label>
+                  <label className="text-sm font-medium mb-1 block">Tipo de Autor</label>
                   <Select>
                     <SelectTrigger>
-                      <SelectValue placeholder="All Authors" />
+                      <SelectValue placeholder="Todos los Autores" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All Authors</SelectItem>
-                      <SelectItem value="citizen">Citizens</SelectItem>
-                      <SelectItem value="legislator">Legislators</SelectItem>
-                      <SelectItem value="organization">Organizations</SelectItem>
+                      <SelectItem value="all">Todos los Autores</SelectItem>
+                      <SelectItem value="citizen">Ciudadanos</SelectItem>
+                      <SelectItem value="legislator">Legisladores</SelectItem>
+                      <SelectItem value="organization">Organizaciones</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium mb-1 block">Time Period</label>
+                  <label className="text-sm font-medium mb-1 block">Período de Tiempo</label>
                   <Select>
                     <SelectTrigger>
-                      <SelectValue placeholder="Any Time" />
+                      <SelectValue placeholder="Cualquier Momento" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="any">Any Time</SelectItem>
-                      <SelectItem value="today">Today</SelectItem>
-                      <SelectItem value="this-week">This Week</SelectItem>
-                      <SelectItem value="this-month">This Month</SelectItem>
-                      <SelectItem value="this-year">This Year</SelectItem>
-                    </SelectContent>
+                      <SelectItem value="any">Cualquier Momento</SelectItem>
+                      <SelectItem value="today">Hoy</SelectItem>
+                      <SelectItem value="this-week">Esta Semana</SelectItem>
+                      <SelectItem value="this-month">Este Mes</SelectItem>
+                      <SelectItem value="this-year">Este Año</SelectItem>
+                      </SelectContent>
                   </Select>
                 </div>
 
                 <Separator />
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium mb-1 block">Popular Tags</label>
+                  <label className="text-sm font-medium mb-1 block">Etiquetas Populares</label>
                   <div className="flex flex-wrap gap-2">
-                    {["Climate", "Education", "Tax Reform", "Healthcare", "Transportation"].map((tag) => (
+                    {["Clima", "Educación", "Reforma Fiscal", "Salud", "Transporte"].map((tag) => (
                       <Badge
                         key={tag}
                         variant="outline"
@@ -206,52 +206,52 @@ export default function ForumsPage() {
 
                 <Separator />
 
-                <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Apply Filters</Button>
+                <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Aplicar Filtros</Button>
                 <Button variant="outline" className="w-full">
-                  Reset Filters
+                  Reiniciar Filtros
                 </Button>
               </CardContent>
             </Card>
 
             <Card className="mt-6">
               <CardHeader>
-                <CardTitle>Forum Statistics</CardTitle>
+                <CardTitle>Estadísticas del Foro</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-500">Total Topics:</span>
+                  <span className="text-sm text-gray-500">Total de Temas:</span>
                   <span className="font-medium">1,245</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-500">Total Posts:</span>
+                  <span className="text-sm text-gray-500">Total de Publicaciones:</span>
                   <span className="font-medium">24,689</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-500">Active Users:</span>
+                  <span className="text-sm text-gray-500">Usuarios Activos:</span>
                   <span className="font-medium">3,782</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-sm text-gray-500">Topics Today:</span>
+                  <span className="text-sm text-gray-500">Temas Hoy:</span>
                   <span className="font-medium">42</span>
                 </div>
 
                 <Separator />
 
                 <div>
-                  <h4 className="text-sm font-medium mb-2">Top Contributors</h4>
+                  <h4 className="text-sm font-medium mb-2">Principales Contribuyentes</h4>
                   <div className="space-y-3">
                     {[1, 2, 3].map((i) => (
                       <div key={i} className="flex items-center gap-2">
                         <Image
                           src={`/placeholder.svg?height=32&width=32`}
-                          alt="User"
+                          alt="Usuario"
                           width={32}
                           height={32}
                           className="rounded-full"
                         />
                         <div>
-                          <p className="text-sm font-medium">User Name {i}</p>
-                          <p className="text-xs text-gray-500">{150 - i * 30} posts</p>
+                          <p className="text-sm font-medium">Nombre Usuario {i}</p>
+                          <p className="text-xs text-gray-500">{150 - i * 30} publicaciones</p>
                         </div>
                       </div>
                     ))}
@@ -265,10 +265,10 @@ export default function ForumsPage() {
             <Tabs defaultValue="all">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                 <TabsList>
-                  <TabsTrigger value="all">All Topics</TabsTrigger>
-                  <TabsTrigger value="hot">Hot Topics</TabsTrigger>
-                  <TabsTrigger value="unanswered">Unanswered</TabsTrigger>
-                  <TabsTrigger value="my-topics">My Topics</TabsTrigger>
+                  <TabsTrigger value="all">Todos los Temas</TabsTrigger>
+                  <TabsTrigger value="hot">Temas Destacados</TabsTrigger>
+                  <TabsTrigger value="unanswered">Sin Respuestas</TabsTrigger>
+                  <TabsTrigger value="my-topics">Mis Temas</TabsTrigger>
                 </TabsList>
 
                 <div className="flex items-center gap-2">
@@ -276,15 +276,15 @@ export default function ForumsPage() {
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" className="flex items-center">
                         <ArrowUpDown className="mr-2 h-4 w-4" />
-                        Sort by
+                        Ordenar por
                         <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Most Recent</DropdownMenuItem>
-                      <DropdownMenuItem>Most Replies</DropdownMenuItem>
-                      <DropdownMenuItem>Most Views</DropdownMenuItem>
-                      <DropdownMenuItem>Alphabetical (A-Z)</DropdownMenuItem>
+                      <DropdownMenuItem>Más Recientes</DropdownMenuItem>
+                      <DropdownMenuItem>Más Respuestas</DropdownMenuItem>
+                      <DropdownMenuItem>Más Vistos</DropdownMenuItem>
+                      <DropdownMenuItem>Alfabético (A-Z)</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -305,7 +305,7 @@ export default function ForumsPage() {
                                 <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">{topic.category}</Badge>
                                 {topic.isHot && (
                                   <Badge variant="outline" className="text-red-500 border-red-200 bg-red-50">
-                                    Hot
+                                    Destacado
                                   </Badge>
                                 )}
                               </div>
@@ -318,7 +318,7 @@ export default function ForumsPage() {
                                 <div className="flex items-center gap-1">
                                   <Users className="h-4 w-4" />
                                   <span>
-                                    Started by{" "}
+                                    Iniciado por{" "}
                                     <Link href="#" className="font-medium text-[#0D3B39] hover:underline">
                                       {topic.author}
                                     </Link>{" "}
@@ -329,15 +329,15 @@ export default function ForumsPage() {
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <MessageSquare className="h-4 w-4" />
-                                  <span>{topic.replies} replies</span>
+                                  <span>{topic.replies} respuestas</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Eye className="h-4 w-4" />
-                                  <span>{topic.views} views</span>
+                                  <span>{topic.views} vistas</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Clock className="h-4 w-4" />
-                                  <span>Last reply {topic.lastActivity}</span>
+                                  <span>Última respuesta {topic.lastActivity}</span>
                                 </div>
                               </div>
                             </div>
@@ -390,7 +390,7 @@ export default function ForumsPage() {
                                 <div className="flex items-center gap-2">
                                   <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">{topic.category}</Badge>
                                   <Badge variant="outline" className="text-red-500 border-red-200 bg-red-50">
-                                    Hot
+                                    Destacado
                                   </Badge>
                                 </div>
                                 <Link href={`/forums/topic/${topic.id}`} className="block">
@@ -402,7 +402,7 @@ export default function ForumsPage() {
                                   <div className="flex items-center gap-1">
                                     <Users className="h-4 w-4" />
                                     <span>
-                                      Started by{" "}
+                                      Iniciado por{" "}
                                       <Link href="#" className="font-medium text-[#0D3B39] hover:underline">
                                         {topic.author}
                                       </Link>{" "}
@@ -413,15 +413,15 @@ export default function ForumsPage() {
                                   </div>
                                   <div className="flex items-center gap-1">
                                     <MessageSquare className="h-4 w-4" />
-                                    <span>{topic.replies} replies</span>
+                                    <span>{topic.replies} respuestas</span>
                                   </div>
                                   <div className="flex items-center gap-1">
                                     <Eye className="h-4 w-4" />
-                                    <span>{topic.views} views</span>
+                                    <span>{topic.views} vistas</span>
                                   </div>
                                   <div className="flex items-center gap-1">
                                     <Clock className="h-4 w-4" />
-                                    <span>Last reply {topic.lastActivity}</span>
+                                    <span>Última respuesta {topic.lastActivity}</span>
                                   </div>
                                 </div>
                               </div>
@@ -436,7 +436,7 @@ export default function ForumsPage() {
               <TabsContent value="unanswered" className="mt-0">
                 <Card className="p-8 text-center">
                   <CardDescription>
-                    No unanswered topics at the moment. Check back later or be the first to create a new topic!
+                    No hay temas sin respuestas en este momento. Vuelve más tarde o sé el primero en crear un nuevo tema.
                   </CardDescription>
                 </Card>
               </TabsContent>
@@ -444,10 +444,10 @@ export default function ForumsPage() {
               <TabsContent value="my-topics" className="mt-0">
                 <Card className="p-8 text-center">
                   <CardDescription>
-                    You haven't created any topics yet. Start a discussion by clicking the "Create New Topic" button.
+                    Aún no has creado ningún tema. Inicia una discusión haciendo clic en el botón "Crear Nuevo Tema".
                   </CardDescription>
                   <Button className="mt-4 bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
-                    <Plus className="mr-2 h-4 w-4" /> Create New Topic
+                    <Plus className="mr-2 h-4 w-4" /> Crear Nuevo Tema
                   </Button>
                 </Card>
               </TabsContent>

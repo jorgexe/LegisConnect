@@ -30,7 +30,7 @@ export default function LoginPage() {
 
     // Simple validation
     if (!email || !password) {
-      setError("Please fill in all fields")
+      setError("Por favor, complete todos los campos")
       setIsLoading(false)
       return
     }
@@ -43,7 +43,7 @@ export default function LoginPage() {
       // Redirect to dashboard after successful login
       window.location.href = "/dashboard"
     } catch (err) {
-      setError("Invalid email or password. Please try again.")
+      setError("Email o contraseña incorrectos. Por favor, inténtelo de nuevo.")
     } finally {
       setIsLoading(false)
     }
@@ -60,8 +60,8 @@ export default function LoginPage() {
 
         <Card className="w-full max-w-md">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-center">Welcome back</CardTitle>
-            <CardDescription className="text-center">Sign in to your account to continue</CardDescription>
+            <CardTitle className="text-2xl font-bold text-center">Bienvenido de nuevo</CardTitle>
+            <CardDescription className="text-center">Inicia sesión en tu cuenta para continuar</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
@@ -74,13 +74,13 @@ export default function LoginPage() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Correo electrónico</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
                     type="email"
-                    placeholder="name@example.com"
+                    placeholder="nombre@ejemplo.com"
                     className="pl-10"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -91,9 +91,9 @@ export default function LoginPage() {
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Contraseña</Label>
                   <Link href="/forgot-password" className="text-xs text-[#0D3B39] hover:underline">
-                    Forgot password?
+                    ¿Olvidaste tu contraseña?
                   </Link>
                 </div>
                 <div className="relative">
@@ -119,7 +119,7 @@ export default function LoginPage() {
                     ) : (
                       <Eye className="h-4 w-4 text-gray-500" />
                     )}
-                    <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                    <span className="sr-only">{showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}</span>
                   </Button>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function LoginPage() {
                   htmlFor="remember"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Remember me for 30 days
+                  Recordarme durante 30 días
                 </label>
               </div>
 
@@ -143,7 +143,7 @@ export default function LoginPage() {
                 className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing in..." : "Sign in"}
+                {isLoading ? "Iniciando sesión..." : "Iniciar sesión"}
               </Button>
             </form>
 
@@ -153,15 +153,15 @@ export default function LoginPage() {
                   <Separator className="w-full" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                  <span className="bg-card px-2 text-muted-foreground">O continuar con</span>
                 </div>
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-3">
                 <Button variant="outline" className="h-10">
                   <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Google logo"
+                    src="/google-logo.png?height=20&width=20"
+                    alt="Logo de Google"
                     width={20}
                     height={20}
                     className="mr-2 h-4 w-4"
@@ -170,8 +170,8 @@ export default function LoginPage() {
                 </Button>
                 <Button variant="outline" className="h-10">
                   <Image
-                    src="/placeholder.svg?height=20&width=20"
-                    alt="Facebook logo"
+                    src="/facebook-logo.png?height=20&width=20"
+                    alt="Logo de Facebook"
                     width={20}
                     height={20}
                     className="mr-2 h-4 w-4"
@@ -183,9 +183,9 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <div className="text-center text-sm">
-              Don&apos;t have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <Link href="/register" className="text-[#0D3B39] underline hover:text-[#0D3B39]/80">
-                Register
+                Regístrate
               </Link>
             </div>
           </CardFooter>

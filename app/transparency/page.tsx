@@ -17,10 +17,9 @@ export default function TransparencyPage() {
     <div className="min-h-screen bg-[#E1D7C1]">
       <div className="bg-[#0D3B39] text-white py-12">
         <div className="container">
-          <h1 className="text-3xl font-bold mb-4">Legislative Transparency</h1>
+          <h1 className="text-3xl font-bold mb-4">Transparencia Legislativa</h1>
           <p className="text-lg opacity-90 max-w-2xl">
-            Access detailed information about legislators' voting histories, public spending, and legislative
-            performance metrics.
+            Accede a información detallada sobre el historial de votación de los legisladores, el gasto público y las métricas de desempeño legislativo.
           </p>
         </div>
       </div>
@@ -29,94 +28,94 @@ export default function TransparencyPage() {
         <Tabs defaultValue="voting" className="space-y-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <TabsList className="bg-white">
-              <TabsTrigger value="voting">Voting History</TabsTrigger>
-              <TabsTrigger value="spending">Public Spending</TabsTrigger>
-              <TabsTrigger value="reports">Reports</TabsTrigger>
+              <TabsTrigger value="voting">Historial de Votación</TabsTrigger>
+              <TabsTrigger value="spending">Gasto Público</TabsTrigger>
+              <TabsTrigger value="reports">Informes</TabsTrigger>
             </TabsList>
 
             <div className="relative w-full sm:w-auto">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-              <Input placeholder="Search transparency data..." className="pl-8 w-full sm:w-[250px]" />
+              <Input placeholder="Buscar datos de transparencia..." className="pl-8 w-full sm:w-[250px]" />
             </div>
           </div>
 
-          {/* Voting History Tab */}
+          {/* Pestaña de Historial de Votación */}
           <TabsContent value="voting" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               <div className="lg:col-span-1">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <Filter className="mr-2 h-5 w-5" /> Filters
+                      <Filter className="mr-2 h-5 w-5" /> Filtros
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Legislator</label>
+                      <label className="text-sm font-medium mb-1 block">Legislador</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Legislators" />
+                          <SelectValue placeholder="Todos los Legisladores" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Legislators</SelectItem>
-                          <SelectItem value="legislator1">Maria Garcia</SelectItem>
-                          <SelectItem value="legislator2">Juan Martinez</SelectItem>
-                          <SelectItem value="legislator3">Ana Lopez</SelectItem>
+                          <SelectItem value="all">Todos los Legisladores</SelectItem>
+                          <SelectItem value="legislator1">María García</SelectItem>
+                          <SelectItem value="legislator2">Juan Martínez</SelectItem>
+                          <SelectItem value="legislator3">Ana López</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Political Party</label>
+                      <label className="text-sm font-medium mb-1 block">Partido Político</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Parties" />
+                          <SelectValue placeholder="Todos los Partidos" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Parties</SelectItem>
-                          <SelectItem value="party1">Party A</SelectItem>
-                          <SelectItem value="party2">Party B</SelectItem>
-                          <SelectItem value="party3">Party C</SelectItem>
+                          <SelectItem value="all">Todos los Partidos</SelectItem>
+                          <SelectItem value="party1">Partido A</SelectItem>
+                          <SelectItem value="party2">Partido B</SelectItem>
+                          <SelectItem value="party3">Partido C</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Category</label>
+                      <label className="text-sm font-medium mb-1 block">Categoría</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Categories" />
+                          <SelectValue placeholder="Todas las Categorías" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Categories</SelectItem>
-                          <SelectItem value="environment">Environment</SelectItem>
-                          <SelectItem value="education">Education</SelectItem>
-                          <SelectItem value="healthcare">Healthcare</SelectItem>
-                          <SelectItem value="economy">Economy</SelectItem>
+                          <SelectItem value="all">Todas las Categorías</SelectItem>
+                          <SelectItem value="environment">Medio Ambiente</SelectItem>
+                          <SelectItem value="education">Educación</SelectItem>
+                          <SelectItem value="healthcare">Salud</SelectItem>
+                          <SelectItem value="economy">Economía</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Date Range</label>
+                      <label className="text-sm font-medium mb-1 block">Rango de Fechas</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Last 12 Months" />
+                          <SelectValue placeholder="Últimos 12 Meses" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="12months">Last 12 Months</SelectItem>
-                          <SelectItem value="6months">Last 6 Months</SelectItem>
-                          <SelectItem value="3months">Last 3 Months</SelectItem>
-                          <SelectItem value="1month">Last Month</SelectItem>
+                          <SelectItem value="12months">Últimos 12 Meses</SelectItem>
+                          <SelectItem value="6months">Últimos 6 Meses</SelectItem>
+                          <SelectItem value="3months">Últimos 3 Meses</SelectItem>
+                          <SelectItem value="1month">Último Mes</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <Separator />
 
-                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Apply Filters</Button>
+                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Aplicar Filtros</Button>
                     <Button variant="outline" className="w-full">
-                      Reset Filters
+                      Reiniciar Filtros
                     </Button>
                   </CardContent>
                 </Card>
@@ -125,9 +124,9 @@ export default function TransparencyPage() {
               <div className="lg:col-span-3 space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Voting Patterns Overview</CardTitle>
+                    <CardTitle>Resumen de Patrones de Votación</CardTitle>
                     <CardDescription>
-                      Analysis of voting patterns across different categories and political parties
+                      Análisis de patrones de votación entre diferentes categorías y partidos políticos
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -139,68 +138,68 @@ export default function TransparencyPage() {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Recent Voting Records</CardTitle>
-                    <CardDescription>Detailed voting records for recent legislative proposals</CardDescription>
+                    <CardTitle>Registros de Votación Recientes</CardTitle>
+                    <CardDescription>Registros detallados de votación para propuestas legislativas recientes</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Proposal</TableHead>
-                          <TableHead>Category</TableHead>
-                          <TableHead>Date</TableHead>
-                          <TableHead>Votes For</TableHead>
-                          <TableHead>Votes Against</TableHead>
-                          <TableHead>Abstentions</TableHead>
-                          <TableHead>Result</TableHead>
+                          <TableHead>Propuesta</TableHead>
+                          <TableHead>Categoría</TableHead>
+                          <TableHead>Fecha</TableHead>
+                          <TableHead>Votos A Favor</TableHead>
+                          <TableHead>Votos En Contra</TableHead>
+                          <TableHead>Abstenciones</TableHead>
+                          <TableHead>Resultado</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {[
                           {
-                            proposal: "Renewable Energy Initiative",
-                            category: "Environment",
-                            date: "Mar 15, 2023",
+                            proposal: "Iniciativa de Energía Renovable",
+                            category: "Medio Ambiente",
+                            date: "15 Mar, 2023",
                             votesFor: 32,
                             votesAgainst: 18,
                             abstentions: 2,
-                            result: "Passed",
+                            result: "Aprobada",
                           },
                           {
-                            proposal: "Education Reform Act",
-                            category: "Education",
-                            date: "Feb 28, 2023",
+                            proposal: "Acta de Reforma Educativa",
+                            category: "Educación",
+                            date: "28 Feb, 2023",
                             votesFor: 28,
                             votesAgainst: 22,
                             abstentions: 2,
-                            result: "Passed",
+                            result: "Aprobada",
                           },
                           {
-                            proposal: "Healthcare Access Bill",
-                            category: "Healthcare",
-                            date: "Feb 10, 2023",
+                            proposal: "Proyecto de Ley de Acceso a Salud",
+                            category: "Salud",
+                            date: "10 Feb, 2023",
                             votesFor: 25,
                             votesAgainst: 27,
                             abstentions: 0,
-                            result: "Failed",
+                            result: "Rechazada",
                           },
                           {
-                            proposal: "Tax Reform Proposal",
-                            category: "Economy",
-                            date: "Jan 22, 2023",
+                            proposal: "Propuesta de Reforma Fiscal",
+                            category: "Economía",
+                            date: "22 Ene, 2023",
                             votesFor: 30,
                             votesAgainst: 20,
                             abstentions: 2,
-                            result: "Passed",
+                            result: "Aprobada",
                           },
                           {
-                            proposal: "Public Transportation Fund",
-                            category: "Infrastructure",
-                            date: "Jan 15, 2023",
+                            proposal: "Fondo de Transporte Público",
+                            category: "Infraestructura",
+                            date: "15 Ene, 2023",
                             votesFor: 35,
                             votesAgainst: 15,
                             abstentions: 2,
-                            result: "Passed",
+                            result: "Aprobada",
                           },
                         ].map((item, i) => (
                           <TableRow key={i}>
@@ -217,7 +216,7 @@ export default function TransparencyPage() {
                             <TableCell>{item.votesAgainst}</TableCell>
                             <TableCell>{item.abstentions}</TableCell>
                             <TableCell>
-                              <Badge className={item.result === "Passed" ? "bg-green-500" : "bg-red-500"}>
+                              <Badge className={item.result === "Aprobada" ? "bg-green-500" : "bg-red-500"}>
                                 {item.result}
                               </Badge>
                             </TableCell>
@@ -228,60 +227,60 @@ export default function TransparencyPage() {
                   </CardContent>
                   <CardFooter>
                     <Button variant="outline" className="w-full">
-                      View All Voting Records
+                      Ver Todos los Registros de Votación
                     </Button>
                   </CardFooter>
                 </Card>
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Legislator Attendance Records</CardTitle>
-                    <CardDescription>Attendance rates for legislative sessions and committee meetings</CardDescription>
+                    <CardTitle>Registros de Asistencia de Legisladores</CardTitle>
+                    <CardDescription>Tasas de asistencia para sesiones legislativas y reuniones de comités</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Legislator</TableHead>
-                          <TableHead>Party</TableHead>
-                          <TableHead>Sessions Attended</TableHead>
-                          <TableHead>Total Sessions</TableHead>
-                          <TableHead>Attendance Rate</TableHead>
+                          <TableHead>Legislador</TableHead>
+                          <TableHead>Partido</TableHead>
+                          <TableHead>Sesiones Asistidas</TableHead>
+                          <TableHead>Total de Sesiones</TableHead>
+                          <TableHead>Tasa de Asistencia</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {[
                           {
-                            legislator: "Maria Garcia",
-                            party: "Party A",
+                            legislator: "María García",
+                            party: "Partido A",
                             attended: 45,
                             total: 48,
                             rate: "94%",
                           },
                           {
-                            legislator: "Juan Martinez",
-                            party: "Party B",
+                            legislator: "Juan Martínez",
+                            party: "Partido B",
                             attended: 42,
                             total: 48,
                             rate: "88%",
                           },
                           {
-                            legislator: "Ana Lopez",
-                            party: "Party A",
+                            legislator: "Ana López",
+                            party: "Partido A",
                             attended: 47,
                             total: 48,
                             rate: "98%",
                           },
                           {
-                            legislator: "Carlos Rodriguez",
-                            party: "Party C",
+                            legislator: "Carlos Rodríguez",
+                            party: "Partido C",
                             attended: 40,
                             total: 48,
                             rate: "83%",
                           },
                           {
-                            legislator: "Sofia Hernandez",
-                            party: "Party B",
+                            legislator: "Sofía Hernández",
+                            party: "Partido B",
                             attended: 44,
                             total: 48,
                             rate: "92%",
@@ -311,7 +310,7 @@ export default function TransparencyPage() {
                   </CardContent>
                   <CardFooter>
                     <Button variant="outline" className="w-full">
-                      View All Attendance Records
+                      Ver Todos los Registros de Asistencia
                     </Button>
                   </CardFooter>
                 </Card>
@@ -319,36 +318,36 @@ export default function TransparencyPage() {
             </div>
           </TabsContent>
 
-          {/* Public Spending Tab */}
+          {/* Pestaña de Gasto Público */}
           <TabsContent value="spending" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               <div className="lg:col-span-1">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <Filter className="mr-2 h-5 w-5" /> Filters
+                      <Filter className="mr-2 h-5 w-5" /> Filtros
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Category</label>
+                      <label className="text-sm font-medium mb-1 block">Categoría</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Categories" />
+                          <SelectValue placeholder="Todas las Categorías" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Categories</SelectItem>
-                          <SelectItem value="education">Education</SelectItem>
-                          <SelectItem value="healthcare">Healthcare</SelectItem>
-                          <SelectItem value="infrastructure">Infrastructure</SelectItem>
-                          <SelectItem value="defense">Defense</SelectItem>
-                          <SelectItem value="social">Social Programs</SelectItem>
+                          <SelectItem value="all">Todas las Categorías</SelectItem>
+                          <SelectItem value="education">Educación</SelectItem>
+                          <SelectItem value="healthcare">Salud</SelectItem>
+                          <SelectItem value="infrastructure">Infraestructura</SelectItem>
+                          <SelectItem value="defense">Defensa</SelectItem>
+                          <SelectItem value="social">Programas Sociales</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Year</label>
+                      <label className="text-sm font-medium mb-1 block">Año</label>
                       <Select>
                         <SelectTrigger>
                           <SelectValue placeholder="2023" />
@@ -364,43 +363,43 @@ export default function TransparencyPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Region</label>
+                      <label className="text-sm font-medium mb-1 block">Región</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Regions" />
+                          <SelectValue placeholder="Todas las Regiones" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Regions</SelectItem>
-                          <SelectItem value="north">North</SelectItem>
-                          <SelectItem value="south">South</SelectItem>
-                          <SelectItem value="east">East</SelectItem>
-                          <SelectItem value="west">West</SelectItem>
-                          <SelectItem value="central">Central</SelectItem>
+                          <SelectItem value="all">Todas las Regiones</SelectItem>
+                          <SelectItem value="north">Norte</SelectItem>
+                          <SelectItem value="south">Sur</SelectItem>
+                          <SelectItem value="east">Este</SelectItem>
+                          <SelectItem value="west">Oeste</SelectItem>
+                          <SelectItem value="central">Centro</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Budget Range</label>
+                      <label className="text-sm font-medium mb-1 block">Rango de Presupuesto</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Amounts" />
+                          <SelectValue placeholder="Todas las Cantidades" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Amounts</SelectItem>
-                          <SelectItem value="small">Under $1 Million</SelectItem>
-                          <SelectItem value="medium">$1-10 Million</SelectItem>
-                          <SelectItem value="large">$10-100 Million</SelectItem>
-                          <SelectItem value="xlarge">Over $100 Million</SelectItem>
+                          <SelectItem value="all">Todas las Cantidades</SelectItem>
+                          <SelectItem value="small">Menos de $1 Millón</SelectItem>
+                          <SelectItem value="medium">$1-10 Millones</SelectItem>
+                          <SelectItem value="large">$10-100 Millones</SelectItem>
+                          <SelectItem value="xlarge">Más de $100 Millones</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <Separator />
 
-                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Apply Filters</Button>
+                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Aplicar Filtros</Button>
                     <Button variant="outline" className="w-full">
-                      Reset Filters
+                      Reiniciar Filtros
                     </Button>
                   </CardContent>
                 </Card>
@@ -409,9 +408,9 @@ export default function TransparencyPage() {
               <div className="lg:col-span-3 space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Budget Allocation Overview</CardTitle>
+                    <CardTitle>Resumen de Asignación Presupuestaria</CardTitle>
                     <CardDescription>
-                      Breakdown of public spending by category for the current fiscal year
+                      Desglose del gasto público por categoría para el año fiscal actual
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -424,85 +423,85 @@ export default function TransparencyPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Card>
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-gray-500">Total Budget</CardTitle>
+                      <CardTitle className="text-sm font-medium text-gray-500">Presupuesto Total</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold">$1.2 Billion</div>
-                      <p className="text-xs text-gray-500">Fiscal Year 2023</p>
+                      <div className="text-2xl font-bold">$1.2 Mil Millones</div>
+                      <p className="text-xs text-gray-500">Año Fiscal 2023</p>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-gray-500">Approved Projects</CardTitle>
+                      <CardTitle className="text-sm font-medium text-gray-500">Proyectos Aprobados</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="text-2xl font-bold">248</div>
-                      <p className="text-xs text-gray-500">Across all categories</p>
+                      <p className="text-xs text-gray-500">En todas las categorías</p>
                     </CardContent>
                   </Card>
                   <Card>
                     <CardHeader className="pb-2">
-                      <CardTitle className="text-sm font-medium text-gray-500">Budget Execution</CardTitle>
+                      <CardTitle className="text-sm font-medium text-gray-500">Ejecución Presupuestaria</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="text-2xl font-bold">78%</div>
-                      <p className="text-xs text-gray-500">Of allocated funds used</p>
+                      <p className="text-xs text-gray-500">De fondos asignados utilizados</p>
                     </CardContent>
                   </Card>
                 </div>
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Major Spending Projects</CardTitle>
-                    <CardDescription>Largest budget allocations linked to approved legislation</CardDescription>
+                    <CardTitle>Principales Proyectos de Gasto</CardTitle>
+                    <CardDescription>Mayores asignaciones presupuestarias vinculadas a legislación aprobada</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Project</TableHead>
-                          <TableHead>Related Legislation</TableHead>
-                          <TableHead>Category</TableHead>
-                          <TableHead>Budget</TableHead>
-                          <TableHead>Status</TableHead>
+                          <TableHead>Proyecto</TableHead>
+                          <TableHead>Legislación Relacionada</TableHead>
+                          <TableHead>Categoría</TableHead>
+                          <TableHead>Presupuesto</TableHead>
+                          <TableHead>Estado</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {[
                           {
-                            project: "Highway Expansion Program",
-                            legislation: "Infrastructure Development Act",
-                            category: "Infrastructure",
-                            budget: "$120 Million",
-                            status: "In Progress",
+                            project: "Programa de Expansión de Carreteras",
+                            legislation: "Acta de Desarrollo de Infraestructura",
+                            category: "Infraestructura",
+                            budget: "$120 Millones",
+                            status: "En Progreso",
                           },
                           {
-                            project: "Public School Modernization",
-                            legislation: "Education Reform Act",
-                            category: "Education",
-                            budget: "$85 Million",
-                            status: "In Progress",
+                            project: "Modernización de Escuelas Públicas",
+                            legislation: "Acta de Reforma Educativa",
+                            category: "Educación",
+                            budget: "$85 Millones",
+                            status: "En Progreso",
                           },
                           {
-                            project: "Rural Healthcare Centers",
-                            legislation: "Healthcare Access Bill",
-                            category: "Healthcare",
-                            budget: "$65 Million",
-                            status: "Planning",
+                            project: "Centros de Salud Rurales",
+                            legislation: "Proyecto de Ley de Acceso a Salud",
+                            category: "Salud",
+                            budget: "$65 Millones",
+                            status: "Planificación",
                           },
                           {
-                            project: "Renewable Energy Grid",
-                            legislation: "Renewable Energy Initiative",
-                            category: "Environment",
-                            budget: "$95 Million",
-                            status: "In Progress",
+                            project: "Red de Energía Renovable",
+                            legislation: "Iniciativa de Energía Renovable",
+                            category: "Medio Ambiente",
+                            budget: "$95 Millones",
+                            status: "En Progreso",
                           },
                           {
-                            project: "Affordable Housing Development",
-                            legislation: "Housing Accessibility Act",
-                            category: "Social Programs",
-                            budget: "$75 Million",
-                            status: "Planning",
+                            project: "Desarrollo de Viviendas Asequibles",
+                            legislation: "Ley de Accesibilidad a la Vivienda",
+                            category: "Programas Sociales",
+                            budget: "$75 Millones",
+                            status: "Planificación",
                           },
                         ].map((item, i) => (
                           <TableRow key={i}>
@@ -521,7 +520,7 @@ export default function TransparencyPage() {
                             </TableCell>
                             <TableCell>{item.budget}</TableCell>
                             <TableCell>
-                              <Badge className={item.status === "In Progress" ? "bg-[#C8A96A]" : "bg-blue-500"}>
+                              <Badge className={item.status === "En Progreso" ? "bg-[#C8A96A]" : "bg-blue-500"}>
                                 {item.status}
                               </Badge>
                             </TableCell>
@@ -532,59 +531,59 @@ export default function TransparencyPage() {
                   </CardContent>
                   <CardFooter>
                     <Button variant="outline" className="w-full">
-                      View All Projects
+                      Ver Todos los Proyectos
                     </Button>
                   </CardFooter>
                 </Card>
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Budget Trends</CardTitle>
-                    <CardDescription>Year-over-year comparison of budget allocations by category</CardDescription>
+                    <CardTitle>Tendencias Presupuestarias</CardTitle>
+                    <CardDescription>Comparación año tras año de asignaciones presupuestarias por categoría</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Category</TableHead>
+                          <TableHead>Categoría</TableHead>
                           <TableHead>2021</TableHead>
                           <TableHead>2022</TableHead>
                           <TableHead>2023</TableHead>
-                          <TableHead>Change</TableHead>
+                          <TableHead>Cambio</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {[
                           {
-                            category: "Education",
+                            category: "Educación",
                             y2021: "$210M",
                             y2022: "$230M",
                             y2023: "$250M",
                             change: "+8.7%",
                           },
                           {
-                            category: "Healthcare",
+                            category: "Salud",
                             y2021: "$180M",
                             y2022: "$195M",
                             y2023: "$220M",
                             change: "+12.8%",
                           },
                           {
-                            category: "Infrastructure",
+                            category: "Infraestructura",
                             y2021: "$250M",
                             y2022: "$280M",
                             y2023: "$320M",
                             change: "+14.3%",
                           },
                           {
-                            category: "Environment",
+                            category: "Medio Ambiente",
                             y2021: "$90M",
                             y2022: "$120M",
                             y2023: "$150M",
                             change: "+25.0%",
                           },
                           {
-                            category: "Social Programs",
+                            category: "Programas Sociales",
                             y2021: "$160M",
                             y2022: "$170M",
                             y2023: "$185M",
@@ -607,35 +606,35 @@ export default function TransparencyPage() {
             </div>
           </TabsContent>
 
-          {/* Reports Tab */}
+          {/* Pestaña de Informes */}
           <TabsContent value="reports" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               <div className="lg:col-span-1">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center">
-                      <Filter className="mr-2 h-5 w-5" /> Filters
+                      <Filter className="mr-2 h-5 w-5" /> Filtros
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Report Type</label>
+                      <label className="text-sm font-medium mb-1 block">Tipo de Informe</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Types" />
+                          <SelectValue placeholder="Todos los Tipos" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Types</SelectItem>
-                          <SelectItem value="annual">Annual Reports</SelectItem>
-                          <SelectItem value="quarterly">Quarterly Reports</SelectItem>
-                          <SelectItem value="audit">Audit Reports</SelectItem>
-                          <SelectItem value="performance">Performance Reports</SelectItem>
+                          <SelectItem value="all">Todos los Tipos</SelectItem>
+                          <SelectItem value="annual">Informes Anuales</SelectItem>
+                          <SelectItem value="quarterly">Informes Trimestrales</SelectItem>
+                          <SelectItem value="audit">Informes de Auditoría</SelectItem>
+                          <SelectItem value="performance">Informes de Desempeño</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Year</label>
+                      <label className="text-sm font-medium mb-1 block">Año</label>
                       <Select>
                         <SelectTrigger>
                           <SelectValue placeholder="2023" />
@@ -651,26 +650,26 @@ export default function TransparencyPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium mb-1 block">Category</label>
+                      <label className="text-sm font-medium mb-1 block">Categoría</label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="All Categories" />
+                          <SelectValue placeholder="Todas las Categorías" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Categories</SelectItem>
-                          <SelectItem value="budget">Budget & Finance</SelectItem>
-                          <SelectItem value="legislation">Legislation</SelectItem>
-                          <SelectItem value="performance">Performance</SelectItem>
-                          <SelectItem value="compliance">Compliance</SelectItem>
+                          <SelectItem value="all">Todas las Categorías</SelectItem>
+                          <SelectItem value="budget">Presupuesto y Finanzas</SelectItem>
+                          <SelectItem value="legislation">Legislación</SelectItem>
+                          <SelectItem value="performance">Desempeño</SelectItem>
+                          <SelectItem value="compliance">Cumplimiento</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <Separator />
 
-                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Apply Filters</Button>
+                    <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Aplicar Filtros</Button>
                     <Button variant="outline" className="w-full">
-                      Reset Filters
+                      Reiniciar Filtros
                     </Button>
                   </CardContent>
                 </Card>
@@ -679,51 +678,49 @@ export default function TransparencyPage() {
               <div className="lg:col-span-3 space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Featured Reports</CardTitle>
-                    <CardDescription>Most recent and important transparency reports</CardDescription>
+                    <CardTitle>Informes Destacados</CardTitle>
+                    <CardDescription>Informes de transparencia más recientes e importantes</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Card className="bg-[#0D3B39]/5 border-0">
                         <CardHeader className="pb-2">
-                          <Badge className="w-fit bg-[#C8A96A] hover:bg-[#BF9C5A]">Annual Report</Badge>
-                          <CardTitle className="text-xl">2023 Legislative Performance Report</CardTitle>
+                          <Badge className="w-fit bg-[#C8A96A] hover:bg-[#BF9C5A]">Informe Anual</Badge>
+                          <CardTitle className="text-xl">Informe de Desempeño Legislativo 2023</CardTitle>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600 mb-4">
-                            Comprehensive analysis of legislative activities, voting patterns, and accomplishments for
-                            the 2023 fiscal year.
+                            Análisis exhaustivo de actividades legislativas, patrones de votación y logros para el año fiscal 2023.
                           </p>
                           <div className="flex items-center text-sm text-gray-500">
                             <Calendar className="h-4 w-4 mr-1" />
-                            <span>Published: May 15, 2023</span>
+                            <span>Publicado: 15 May, 2023</span>
                           </div>
                         </CardContent>
                         <CardFooter>
                           <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
-                            <Download className="mr-2 h-4 w-4" /> Download Report
+                            <Download className="mr-2 h-4 w-4" /> Descargar Informe
                           </Button>
                         </CardFooter>
                       </Card>
 
                       <Card className="bg-[#0D3B39]/5 border-0">
                         <CardHeader className="pb-2">
-                          <Badge className="w-fit bg-[#C8A96A] hover:bg-[#BF9C5A]">Audit Report</Badge>
-                          <CardTitle className="text-xl">Public Spending Audit Report</CardTitle>
+                          <Badge className="w-fit bg-[#C8A96A] hover:bg-[#BF9C5A]">Informe de Auditoría</Badge>
+                          <CardTitle className="text-xl">Informe de Auditoría de Gasto Público</CardTitle>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600 mb-4">
-                            Independent audit of public spending linked to approved legislation, with detailed findings
-                            and recommendations.
+                            Auditoría independiente del gasto público vinculado a la legislación aprobada, con hallazgos y recomendaciones detalladas.
                           </p>
                           <div className="flex items-center text-sm text-gray-500">
                             <Calendar className="h-4 w-4 mr-1" />
-                            <span>Published: April 3, 2023</span>
+                            <span>Publicado: 3 Abr, 2023</span>
                           </div>
                         </CardContent>
                         <CardFooter>
                           <Button className="w-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
-                            <Download className="mr-2 h-4 w-4" /> Download Report
+                            <Download className="mr-2 h-4 w-4" /> Descargar Informe
                           </Button>
                         </CardFooter>
                       </Card>
@@ -733,70 +730,70 @@ export default function TransparencyPage() {
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Available Reports</CardTitle>
-                    <CardDescription>Browse and download all transparency reports</CardDescription>
+                    <CardTitle>Informes Disponibles</CardTitle>
+                    <CardDescription>Explora y descarga todos los informes de transparencia</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead>Report Title</TableHead>
-                          <TableHead>Type</TableHead>
-                          <TableHead>Category</TableHead>
-                          <TableHead>Date</TableHead>
-                          <TableHead>Size</TableHead>
-                          <TableHead>Action</TableHead>
+                          <TableHead>Título del Informe</TableHead>
+                          <TableHead>Tipo</TableHead>
+                          <TableHead>Categoría</TableHead>
+                          <TableHead>Fecha</TableHead>
+                          <TableHead>Tamaño</TableHead>
+                          <TableHead>Acción</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
                         {[
                           {
-                            title: "2023 Legislative Performance Report",
-                            type: "Annual",
-                            category: "Performance",
-                            date: "May 15, 2023",
+                            title: "Informe de Desempeño Legislativo 2023",
+                            type: "Anual",
+                            category: "Desempeño",
+                            date: "15 May, 2023",
                             size: "4.2 MB",
                           },
                           {
-                            title: "Public Spending Audit Report",
-                            type: "Audit",
-                            category: "Budget & Finance",
-                            date: "Apr 3, 2023",
+                            title: "Informe de Auditoría de Gasto Público",
+                            type: "Auditoría",
+                            category: "Presupuesto y Finanzas",
+                            date: "3 Abr, 2023",
                             size: "3.8 MB",
                           },
                           {
-                            title: "Q1 2023 Legislative Activity Report",
-                            type: "Quarterly",
-                            category: "Legislation",
-                            date: "Apr 15, 2023",
+                            title: "Informe de Actividad Legislativa Q1 2023",
+                            type: "Trimestral",
+                            category: "Legislación",
+                            date: "15 Abr, 2023",
                             size: "2.5 MB",
                           },
                           {
-                            title: "Compliance and Ethics Annual Review",
-                            type: "Annual",
-                            category: "Compliance",
-                            date: "Mar 10, 2023",
+                            title: "Revisión Anual de Cumplimiento y Ética",
+                            type: "Anual",
+                            category: "Cumplimiento",
+                            date: "10 Mar, 2023",
                             size: "3.1 MB",
                           },
                           {
-                            title: "2022 Budget Execution Report",
-                            type: "Annual",
-                            category: "Budget & Finance",
-                            date: "Feb 28, 2023",
+                            title: "Informe de Ejecución Presupuestaria 2022",
+                            type: "Anual",
+                            category: "Presupuesto y Finanzas",
+                            date: "28 Feb, 2023",
                             size: "5.6 MB",
                           },
                           {
-                            title: "Legislator Attendance and Voting Analysis",
-                            type: "Performance",
-                            category: "Performance",
-                            date: "Feb 15, 2023",
+                            title: "Análisis de Asistencia y Votación de Legisladores",
+                            type: "Desempeño",
+                            category: "Desempeño",
+                            date: "15 Feb, 2023",
                             size: "2.9 MB",
                           },
                           {
-                            title: "Q4 2022 Legislative Activity Report",
-                            type: "Quarterly",
-                            category: "Legislation",
-                            date: "Jan 15, 2023",
+                            title: "Informe de Actividad Legislativa Q4 2022",
+                            type: "Trimestral",
+                            category: "Legislación",
+                            date: "15 Ene, 2023",
                             size: "2.3 MB",
                           },
                         ].map((item, i) => (
@@ -814,7 +811,7 @@ export default function TransparencyPage() {
                             <TableCell>{item.size}</TableCell>
                             <TableCell>
                               <Button size="sm" className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
-                                <Download className="mr-1 h-3 w-3" /> Download
+                                <Download className="mr-1 h-3 w-3" /> Descargar
                               </Button>
                             </TableCell>
                           </TableRow>
@@ -824,29 +821,28 @@ export default function TransparencyPage() {
                   </CardContent>
                   <CardFooter>
                     <Button variant="outline" className="w-full">
-                      View All Reports
+                      Ver Todos los Informes
                     </Button>
                   </CardFooter>
                 </Card>
 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Data Exports</CardTitle>
-                    <CardDescription>Download raw data for your own analysis</CardDescription>
+                    <CardTitle>Exportaciones de Datos</CardTitle>
+                    <CardDescription>Descarga datos en bruto para tu propio análisis</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <Card>
                         <CardHeader className="pb-2">
                           <div className="flex items-center justify-between">
-                            <CardTitle className="text-lg">Voting Records</CardTitle>
+                            <CardTitle className="text-lg">Registros de Votación</CardTitle>
                             <FileText className="h-5 w-5 text-gray-500" />
                           </div>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600">
-                            Complete dataset of all legislative votes, including legislator, party, proposal, and vote
-                            cast.
+                            Conjunto de datos completo de todas las votaciones legislativas, incluyendo legislador, partido, propuesta y voto emitido.
                           </p>
                         </CardContent>
                         <CardFooter className="flex gap-2">
@@ -865,13 +861,13 @@ export default function TransparencyPage() {
                       <Card>
                         <CardHeader className="pb-2">
                           <div className="flex items-center justify-between">
-                            <CardTitle className="text-lg">Budget Data</CardTitle>
+                            <CardTitle className="text-lg">Datos de Presupuesto</CardTitle>
                             <FileText className="h-5 w-5 text-gray-500" />
                           </div>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600">
-                            Detailed budget allocation and spending data by category, project, and region.
+                            Datos detallados de asignación y gasto presupuestario por categoría, proyecto y región.
                           </p>
                         </CardContent>
                         <CardFooter className="flex gap-2">
@@ -890,14 +886,13 @@ export default function TransparencyPage() {
                       <Card>
                         <CardHeader className="pb-2">
                           <div className="flex items-center justify-between">
-                            <CardTitle className="text-lg">Legislator Data</CardTitle>
+                            <CardTitle className="text-lg">Datos de Legisladores</CardTitle>
                             <FileText className="h-5 w-5 text-gray-500" />
                           </div>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600">
-                            Comprehensive data on legislators, including attendance, voting patterns, and sponsored
-                            proposals.
+                            Datos completos sobre los legisladores, incluyendo asistencia, patrones de votación y propuestas patrocinadas.
                           </p>
                         </CardContent>
                         <CardFooter className="flex gap-2">
@@ -916,14 +911,13 @@ export default function TransparencyPage() {
                       <Card>
                         <CardHeader className="pb-2">
                           <div className="flex items-center justify-between">
-                            <CardTitle className="text-lg">Proposal Data</CardTitle>
+                            <CardTitle className="text-lg">Datos de Propuestas</CardTitle>
                             <FileText className="h-5 w-5 text-gray-500" />
                           </div>
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-gray-600">
-                            Data on all legislative proposals, including status, category, votes, and implementation
-                            progress.
+                            Datos sobre todas las propuestas legislativas, incluyendo estado, categoría, votos y progreso de implementación.
                           </p>
                         </CardContent>
                         <CardFooter className="flex gap-2">

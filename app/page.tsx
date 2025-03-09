@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         className="relative py-20 md:py-32 bg-cover bg-center" 
-        style={{ backgroundImage: 'url(/legisladores2.png)', backgroundSize: 'cover' }}
+        style={{ backgroundImage: 'url(/legisladores.png)', backgroundSize: 'cover' }}
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50"></div>
@@ -38,16 +38,16 @@ export default function Home() {
       <section className="py-16 bg-[#E1D7C1]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">How LegisConnect Works</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">Cómo Funciona LegisConnect</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              A simple process to make your voice heard in the legislative process
+              Un proceso simple para hacer que tu voz sea escuchada en el proceso legislativo
             </p>
           </div>
 
           <div className="relative mx-auto max-w-4xl mb-12">
             <div className="aspect-video rounded-xl overflow-hidden relative bg-black/5 flex items-center justify-center">
               <Image
-                src="/placeholder.svg?height=720&width=1280"
+                src="/como-funciona.png?height=720&width=1280"
                 alt="How LegisConnect Works"
                 width={1280}
                 height={720}
@@ -56,7 +56,7 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button size="icon" className="w-16 h-16 rounded-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
                   <Play className="h-8 w-8" />
-                  <span className="sr-only">Play video</span>
+                  <span className="sr-only">Reproducir video</span>
                 </Button>
               </div>
             </div>
@@ -67,27 +67,27 @@ export default function Home() {
               <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
                 <span className="text-[#0D3B39] font-bold text-xl">1</span>
               </div>
-              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Create an Account</h3>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Crea una Cuenta</h3>
               <p className="text-gray-600">
-                Sign up as a citizen, legislator, or organization to access all platform features.
+                Regístrate como ciudadano, legislador u organización para acceder a todas las funciones de la plataforma.
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
                 <span className="text-[#0D3B39] font-bold text-xl">2</span>
               </div>
-              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Engage with Proposals</h3>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Participa en las Propuestas</h3>
               <p className="text-gray-600">
-                Browse, create, or debate legislative proposals that matter to you and your community.
+                Explora, crea o debate propuestas legislativas que importan para ti y tu comunidad.
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
                 <span className="text-[#0D3B39] font-bold text-xl">3</span>
               </div>
-              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Track Progress</h3>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Sigue el Progreso</h3>
               <p className="text-gray-600">
-                Follow the journey of proposals through the legislative process with real-time updates.
+                Sigue el recorrido de las propuestas a través del proceso legislativo con actualizaciones en tiempo real.
               </p>
             </div>
           </div>
@@ -98,60 +98,150 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold tracking-tight text-[#0D3B39]">Featured Proposals</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-[#0D3B39]">Propuestas Destacadas</h2>
             <Link href="/explore" className="text-[#C8A96A] hover:text-[#BF9C5A] font-medium flex items-center">
-              View All <ArrowRight className="ml-1 h-4 w-4" />
+              Ver Todas <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="overflow-hidden">
-                <CardHeader className="pb-3">
-                  <div className="flex justify-between items-start">
-                    <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">Environment</Badge>
-                    <Badge variant="outline" className="text-gray-500 bg-transparent">
-                      In Progress
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl mt-3">Renewable Energy Initiative {i}</CardTitle>
-                  <CardDescription className="line-clamp-2">
-                    A proposal to increase renewable energy production by 30% over the next 5 years through tax
-                    incentives and grants.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="text-sm text-gray-500">
-                  <div className="flex items-center mb-3">
-                    <Image
-                      src="/placeholder.svg?height=40&width=40"
-                      alt="Author"
-                      width={24}
-                      height={24}
-                      className="rounded-full mr-2"
-                    />
-                    <span>
-                      Proposed by{" "}
-                      <Link href="#" className="text-[#0D3B39] font-medium">
-                        Rep. Maria Garcia
-                      </Link>
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span>245 supporters</span>
-                    <span>32 comments</span>
-                    <span>Updated 2 days ago</span>
-                  </div>
-                </CardContent>
-                <CardFooter className="pt-3 border-t flex justify-between">
-                  <Button variant="ghost" size="sm" className="text-[#0D3B39]">
-                    <CheckCircle className="mr-1 h-4 w-4" /> Support
-                  </Button>
-                  <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
-                    View Details
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+            {/* Propuesta 1: Medio Ambiente */}
+            <Card className="overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex justify-between items-start">
+                  <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">Medio Ambiente</Badge>
+                  <Badge variant="outline" className="text-gray-500 bg-transparent">
+                    En Progreso
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl mt-3">Iniciativa de Energía Renovable</CardTitle>
+                <CardDescription className="line-clamp-2">
+                  Una propuesta para aumentar la producción de energía renovable en un 30% durante los próximos 5 años mediante incentivos fiscales y subvenciones.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-gray-500">
+                <div className="flex items-center mb-3">
+                  <Image
+                    src="/mujer1.png?height=40&width=40"
+                    alt="Autor"
+                    width={24}
+                    height={24}
+                    className="rounded-full mr-2"
+                  />
+                  <span>
+                    Propuesto por{" "}
+                    <Link href="#" className="text-[#0D3B39] font-medium">
+                      Diputada María del Carmen Rodríguez
+                    </Link>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span>245 seguidores</span>
+                  <span>32 comentarios</span>
+                  <span>Actualizado hace 2 días</span>
+                </div>
+              </CardContent>
+              <CardFooter className="pt-3 border-t flex justify-between">
+                <Button variant="ghost" size="sm" className="text-[#0D3B39]">
+                  <CheckCircle className="mr-1 h-4 w-4" /> Apoyar
+                </Button>
+                <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
+                  Ver Detalles
+                </Button>
+              </CardFooter>
+            </Card>
+
+            {/* Propuesta 2: Educación */}
+            <Card className="overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex justify-between items-start">
+                  <Badge className="bg-[#3B82F6] hover:bg-[#2563EB] text-white">Educación</Badge>
+                  <Badge variant="outline" className="text-amber-500 bg-transparent">
+                    Borrador
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl mt-3">Reforma Educativa Nacional</CardTitle>
+                <CardDescription className="line-clamp-2">
+                  Plan integral para modernizar el sistema educativo nacional, incluyendo actualización curricular y desarrollo profesional docente en todos los niveles.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-gray-500">
+                <div className="flex items-center mb-3">
+                  <Image
+                    src="/hombre1.png?height=40&width=40"
+                    alt="Autor"
+                    width={24}
+                    height={24}
+                    className="rounded-full mr-2"
+                  />
+                  <span>
+                    Propuesto por{" "}
+                    <Link href="#" className="text-[#0D3B39] font-medium">
+                      Sen. Carlos Mendoza
+                    </Link>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span>178 seguidores</span>
+                  <span>45 comentarios</span>
+                  <span>Actualizado hace 5 días</span>
+                </div>
+              </CardContent>
+              <CardFooter className="pt-3 border-t flex justify-between">
+                <Button variant="ghost" size="sm" className="text-[#0D3B39]">
+                  <CheckCircle className="mr-1 h-4 w-4" /> Apoyar
+                </Button>
+                <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
+                  Ver Detalles
+                </Button>
+              </CardFooter>
+            </Card>
+
+            {/* Propuesta 3: Salud */}
+            <Card className="overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex justify-between items-start">
+                  <Badge className="bg-[#EF4444] hover:bg-[#DC2626] text-white">Salud</Badge>
+                  <Badge variant="outline" className="text-blue-500 bg-transparent">
+                    En Votación
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl mt-3">Ampliación de Cobertura Médica</CardTitle>
+                <CardDescription className="line-clamp-2">
+                  Propuesta para extender la cobertura médica universal a comunidades rurales y grupos vulnerables, incluyendo servicios de telemedicina y centros de atención primaria.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-sm text-gray-500">
+                <div className="flex items-center mb-3">
+                  <Image
+                    src="/mujer2.png?height=40&width=40"
+                    alt="Autor"
+                    width={24}
+                    height={24}
+                    className="rounded-full mr-2"
+                  />
+                  <span>
+                    Propuesto por{" "}
+                    <Link href="#" className="text-[#0D3B39] font-medium">
+                      Dip. Laura Vázquez
+                    </Link>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span>312 seguidores</span>
+                  <span>67 comentarios</span>
+                  <span>Actualizado ayer</span>
+                </div>
+              </CardContent>
+              <CardFooter className="pt-3 border-t flex justify-between">
+                <Button variant="ghost" size="sm" className="text-[#0D3B39]">
+                  <CheckCircle className="mr-1 h-4 w-4" /> Apoyar
+                </Button>
+                <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
+                  Ver Detalles
+                </Button>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       </section>
@@ -160,9 +250,9 @@ export default function Home() {
       <section className="py-16 bg-[#E1D7C1]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">What Our Users Say</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">Lo Que Dicen Nuestros Usuarios</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Hear from citizens and legislators who are using LegisConnect to make a difference
+              Escucha a ciudadanos y legisladores que están usando LegisConnect para marcar la diferencia
             </p>
           </div>
 
@@ -171,7 +261,7 @@ export default function Home() {
               <CardContent className="pt-6">
                 <div className="flex items-start mb-4">
                   <Image
-                    src="/placeholder.svg?height=60&width=60"
+                    src="/hombre2.png?height=60&width=60"
                     alt="User"
                     width={60}
                     height={60}
@@ -179,12 +269,12 @@ export default function Home() {
                   />
                   <div>
                     <h4 className="font-bold">Carlos Mendez</h4>
-                    <p className="text-sm text-gray-500">Citizen, Tijuana</p>
+                    <p className="text-sm text-gray-500">Ciudadano, Tijuana</p>
                   </div>
                 </div>
                 <p className="italic text-gray-700">
-                  "LegisConnect has transformed how I engage with my representatives. I've been able to propose ideas
-                  and see real action taken on issues that matter to my community."
+                  "LegisConnect ha transformado la forma en que me relaciono con mis representantes. He podido proponer ideas
+                  y ver acciones reales tomadas en temas que importan a mi comunidad."
                 </p>
               </CardContent>
             </Card>
@@ -193,20 +283,20 @@ export default function Home() {
               <CardContent className="pt-6">
                 <div className="flex items-start mb-4">
                   <Image
-                    src="/placeholder.svg?height=60&width=60"
+                    src="/mujer3.png?height=60&width=60"
                     alt="User"
                     width={60}
                     height={60}
                     className="rounded-full mr-4"
                   />
                   <div>
-                    <h4 className="font-bold">Sen. Laura Vazquez</h4>
-                    <p className="text-sm text-gray-500">State Senator, Baja California</p>
+                    <h4 className="font-bold">Sen. Laura Vázquez</h4>
+                    <p className="text-sm text-gray-500">Senadora Estatal, Baja California</p>
                   </div>
                 </div>
                 <p className="italic text-gray-700">
-                  "This platform has revolutionized how I connect with my constituents. I can now gather feedback
-                  directly and ensure legislation truly represents the people's needs."
+                  "Esta plataforma ha revolucionado la forma en que me conecto con mis electores. Ahora puedo recopilar opiniones
+                  directamente y asegurarme de que la legislación realmente represente las necesidades de las personas."
                 </p>
               </CardContent>
             </Card>
@@ -217,12 +307,11 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 bg-[#0D3B39] text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to Make Your Voice Heard?</h2>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">¿Listo para Hacer que tu Voz se Escuche?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Join thousands of citizens and legislators already using LegisConnect to create a more transparent and
-            participatory democracy.
+            Únete a miles de ciudadanos y legisladores que ya utilizan LegisConnect para crear una democracia más transparente y participativa.
           </p>
-          <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Register Now</Button>
+          <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Regístrate Ahora</Button>
         </div>
       </section>
     </div>

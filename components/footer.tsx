@@ -7,30 +7,30 @@ export function Footer() {
         <div className="space-y-3">
           <h3 className="text-lg font-medium">LegisConnect</h3>
           <p className="text-sm text-white/70">
-            Bridging the gap between citizens and legislators for a more transparent democracy.
+          LegisConnect cierra la brecha entre los ciudadanos y los legisladores, permitiéndote participar directamente en el proceso democrático.
           </p>
         </div>
         <div>
-          <h4 className="font-medium mb-3">Quick Links</h4>
+          <h4 className="font-medium mb-3">Enlaces Rápidos</h4>
           <ul className="space-y-2 text-sm text-white/70">
             <li>
               <Link href="/about" className="hover:text-white">
-                About Us
+                Sobre Nosotros
               </Link>
             </li>
             <li>
               <Link href="/explore" className="hover:text-white">
-                Explore Proposals
+                Explorar Propuestas
               </Link>
             </li>
             <li>
               <Link href="/legislators" className="hover:text-white">
-                Legislators Directory
+                Directorio de Legisladores
               </Link>
             </li>
             <li>
               <Link href="/forums" className="hover:text-white">
-                Debate Forums
+                Foros de Debate
               </Link>
             </li>
           </ul>
@@ -40,32 +40,32 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-white/70">
             <li>
               <Link href="/terms" className="hover:text-white">
-                Terms of Service
+                Términos de Servicio
               </Link>
             </li>
             <li>
               <Link href="/privacy" className="hover:text-white">
-                Privacy Policy
+                Política de Privacidad
               </Link>
             </li>
             <li>
               <Link href="/cookies" className="hover:text-white">
-                Cookie Policy
+                Política de Cookies
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <h4 className="font-medium mb-3">Contact</h4>
+          <h4 className="font-medium mb-3">Contacto</h4>
           <ul className="space-y-2 text-sm text-white/70">
             <li>
               <Link href="/contact" className="hover:text-white">
-                Contact Us
+                Contáctanos
               </Link>
             </li>
             <li>
               <Link href="/help" className="hover:text-white">
-                Help Center
+                Centro de Ayuda
               </Link>
             </li>
             <li>
