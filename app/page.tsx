@@ -10,20 +10,25 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#E1D7C1]">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-20 md:py-32">
-        <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Your Voice in the Legislative Process</h1>
-          <p className="text-lg md:text-xl mb-8 max-w-3xl opacity-90">
-            LegisConnect bridges the gap between citizens and legislators, empowering you to engage directly in the
-            democratic process.
+      <section 
+        className="relative py-20 md:py-32 bg-cover bg-center" 
+        style={{ backgroundImage: 'url(/legisladores2.png)', backgroundSize: 'cover' }}
+      >
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center relative z-10">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">Tu Voz en el Proceso Legislativo</h1>
+          <p className="text-lg md:text-xl mb-8 max-w-3xl opacity-90 text-white">
+          LegisConnect cierra la brecha entre los ciudadanos y los legisladores, permitiéndote participar directamente en el proceso democrático.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Register Now</Button>
+            <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Regístrate</Button>
             <Button
               variant="outline"
               className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-lg"
             >
-              Learn More
+              Conocer más
             </Button>
           </div>
         </div>

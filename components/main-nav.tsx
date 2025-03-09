@@ -26,7 +26,7 @@ export function MainNav() {
                 pathname === "/explore" ? "text-white" : "text-white/70",
               )}
             >
-              Explore Proposals
+              Explora Propuestas
             </Link>
             <Link
               href="/legislators"
@@ -35,7 +35,7 @@ export function MainNav() {
                 pathname === "/legislators" ? "text-white" : "text-white/70",
               )}
             >
-              Legislators
+              Legisladores
             </Link>
             <Link
               href="/forums"
@@ -44,7 +44,7 @@ export function MainNav() {
                 pathname === "/forums" ? "text-white" : "text-white/70",
               )}
             >
-              Forums
+              Foros
             </Link>
             <Link
               href="/transparency"
@@ -53,7 +53,7 @@ export function MainNav() {
                 pathname === "/transparency" ? "text-white" : "text-white/70",
               )}
             >
-              Transparency
+              Transparencia
             </Link>
           </nav>
         </div>
