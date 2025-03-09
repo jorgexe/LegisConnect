@@ -1,101 +1,226 @@
-import Image from "next/image";
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, CheckCircle, Play } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-[#E1D7C1]">
+      {/* Hero Section */}
+      <section className="hero-gradient text-white py-20 md:py-32">
+        <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center">
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Your Voice in the Legislative Process</h1>
+          <p className="text-lg md:text-xl mb-8 max-w-3xl opacity-90">
+            LegisConnect bridges the gap between citizens and legislators, empowering you to engage directly in the
+            democratic process.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Register Now</Button>
+            <Button
+              variant="outline"
+              className="bg-transparent border-white text-white hover:bg-white/10 px-8 py-6 text-lg"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="py-16 bg-[#E1D7C1]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">How LegisConnect Works</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              A simple process to make your voice heard in the legislative process
+            </p>
+          </div>
+
+          <div className="relative mx-auto max-w-4xl mb-12">
+            <div className="aspect-video rounded-xl overflow-hidden relative bg-black/5 flex items-center justify-center">
+              <Image
+                src="/placeholder.svg?height=720&width=1280"
+                alt="How LegisConnect Works"
+                width={1280}
+                height={720}
+                className="object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Button size="icon" className="w-16 h-16 rounded-full bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
+                  <Play className="h-8 w-8" />
+                  <span className="sr-only">Play video</span>
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
+                <span className="text-[#0D3B39] font-bold text-xl">1</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Create an Account</h3>
+              <p className="text-gray-600">
+                Sign up as a citizen, legislator, or organization to access all platform features.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
+                <span className="text-[#0D3B39] font-bold text-xl">2</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Engage with Proposals</h3>
+              <p className="text-gray-600">
+                Browse, create, or debate legislative proposals that matter to you and your community.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="mb-4 bg-[#0D3B39]/10 w-12 h-12 rounded-full flex items-center justify-center">
+                <span className="text-[#0D3B39] font-bold text-xl">3</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0D3B39] mb-2">Track Progress</h3>
+              <p className="text-gray-600">
+                Follow the journey of proposals through the legislative process with real-time updates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Proposals Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold tracking-tight text-[#0D3B39]">Featured Proposals</h2>
+            <Link href="/explore" className="text-[#C8A96A] hover:text-[#BF9C5A] font-medium flex items-center">
+              View All <ArrowRight className="ml-1 h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="overflow-hidden">
+                <CardHeader className="pb-3">
+                  <div className="flex justify-between items-start">
+                    <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">Environment</Badge>
+                    <Badge variant="outline" className="text-gray-500 bg-transparent">
+                      In Progress
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-xl mt-3">Renewable Energy Initiative {i}</CardTitle>
+                  <CardDescription className="line-clamp-2">
+                    A proposal to increase renewable energy production by 30% over the next 5 years through tax
+                    incentives and grants.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="text-sm text-gray-500">
+                  <div className="flex items-center mb-3">
+                    <Image
+                      src="/placeholder.svg?height=40&width=40"
+                      alt="Author"
+                      width={24}
+                      height={24}
+                      className="rounded-full mr-2"
+                    />
+                    <span>
+                      Proposed by{" "}
+                      <Link href="#" className="text-[#0D3B39] font-medium">
+                        Rep. Maria Garcia
+                      </Link>
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span>245 supporters</span>
+                    <span>32 comments</span>
+                    <span>Updated 2 days ago</span>
+                  </div>
+                </CardContent>
+                <CardFooter className="pt-3 border-t flex justify-between">
+                  <Button variant="ghost" size="sm" className="text-[#0D3B39]">
+                    <CheckCircle className="mr-1 h-4 w-4" /> Support
+                  </Button>
+                  <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
+                    View Details
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-[#E1D7C1]">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight text-[#0D3B39] mb-4">What Our Users Say</h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              Hear from citizens and legislators who are using LegisConnect to make a difference
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="bg-white">
+              <CardContent className="pt-6">
+                <div className="flex items-start mb-4">
+                  <Image
+                    src="/placeholder.svg?height=60&width=60"
+                    alt="User"
+                    width={60}
+                    height={60}
+                    className="rounded-full mr-4"
+                  />
+                  <div>
+                    <h4 className="font-bold">Carlos Mendez</h4>
+                    <p className="text-sm text-gray-500">Citizen, Tijuana</p>
+                  </div>
+                </div>
+                <p className="italic text-gray-700">
+                  "LegisConnect has transformed how I engage with my representatives. I've been able to propose ideas
+                  and see real action taken on issues that matter to my community."
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white">
+              <CardContent className="pt-6">
+                <div className="flex items-start mb-4">
+                  <Image
+                    src="/placeholder.svg?height=60&width=60"
+                    alt="User"
+                    width={60}
+                    height={60}
+                    className="rounded-full mr-4"
+                  />
+                  <div>
+                    <h4 className="font-bold">Sen. Laura Vazquez</h4>
+                    <p className="text-sm text-gray-500">State Senator, Baja California</p>
+                  </div>
+                </div>
+                <p className="italic text-gray-700">
+                  "This platform has revolutionized how I connect with my constituents. I can now gather feedback
+                  directly and ensure legislation truly represents the people's needs."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-[#0D3B39] text-white">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Ready to Make Your Voice Heard?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            Join thousands of citizens and legislators already using LegisConnect to create a more transparent and
+            participatory democracy.
+          </p>
+          <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] px-8 py-6 text-lg">Register Now</Button>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
+

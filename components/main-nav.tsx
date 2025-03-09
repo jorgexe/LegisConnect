@@ -1,0 +1,113 @@
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Menu } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+
+export function MainNav() {
+  const pathname = usePathname()
+
+  return (
+    <header className="sticky top-0 z-50 w-full border-b bg-[#0D3B39] text-white">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6 md:gap-10">
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="hidden font-bold sm:inline-block text-xl">LegisConnect</span>
+          </Link>
+          <nav className="hidden md:flex gap-6">
+            <Link
+              href="/explore"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === "/explore" ? "text-white" : "text-white/70",
+              )}
+            >
+              Explore Proposals
+            </Link>
+            <Link
+              href="/legislators"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === "/legislators" ? "text-white" : "text-white/70",
+              )}
+            >
+              Legislators
+            </Link>
+            <Link
+              href="/forums"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === "/forums" ? "text-white" : "text-white/70",
+              )}
+            >
+              Forums
+            </Link>
+            <Link
+              href="/transparency"
+              className={cn(
+                "text-sm font-medium transition-colors hover:text-primary",
+                pathname === "/transparency" ? "text-white" : "text-white/70",
+              )}
+            >
+              Transparency
+            </Link>
+          </nav>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="hidden md:flex gap-2">
+            <Link href="/login">
+              <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white/10">
+                Login
+              </Button>
+            </Link>
+            <Link href="/register">
+              <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Register</Button>
+            </Link>
+          </div>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="md:hidden bg-transparent border-white/20">
+                <Menu className="h-5 w-5 text-white" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-[#0D3B39] text-white">
+              <nav className="flex flex-col gap-4 mt-8">
+                <Link href="/explore" className="text-sm font-medium transition-colors hover:text-primary">
+                  Explore Proposals
+                </Link>
+                <Link href="/legislators" className="text-sm font-medium transition-colors hover:text-primary">
+                  Legislators
+                </Link>
+                <Link href="/forums" className="text-sm font-medium transition-colors hover:text-primary">
+                  Forums
+                </Link>
+                <Link href="/transparency" className="text-sm font-medium transition-colors hover:text-primary">
+                  Transparency
+                </Link>
+                <div className="flex flex-col gap-2 mt-4">
+                  <Link href="/login" className="w-full">
+                    <Button
+                      variant="outline"
+                      className="bg-transparent text-white border-white hover:bg-white/10 w-full"
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                  <Link href="/register" className="w-full">
+                    <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] w-full">Register</Button>
+                  </Link>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
+  )
+}
+
