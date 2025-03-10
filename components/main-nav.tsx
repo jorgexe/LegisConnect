@@ -31,7 +31,7 @@ export function MainNav() {
             <Link
               href="/explore"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors hover:text-[#C8A96A]",
                 pathname === "/explore" ? "text-white" : "text-white/70",
               )}
             >
@@ -40,7 +40,7 @@ export function MainNav() {
             <Link
               href="/legislators"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors hover:text-[#C8A96A]",
                 pathname === "/legislators" ? "text-white" : "text-white/70",
               )}
             >
@@ -49,7 +49,7 @@ export function MainNav() {
             <Link
               href="/forums"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors hover:text-[#C8A96A]",
                 pathname === "/forums" ? "text-white" : "text-white/70",
               )}
             >
@@ -58,7 +58,7 @@ export function MainNav() {
             <Link
               href="/transparency"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-sm font-medium transition-colors hover:text-[#C8A96A]",
                 pathname === "/transparency" ? "text-white" : "text-white/70",
               )}
             >
@@ -70,11 +70,11 @@ export function MainNav() {
           <div className="hidden md:flex gap-2">
             <Link href="/login">
               <Button variant="outline" className="bg-transparent text-white border-white hover:bg-white/10">
-                Login
+                Iniciar Sesión
               </Button>
             </Link>
             <Link href="/register">
-              <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Register</Button>
+              <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Regístrate</Button>
             </Link>
           </div>
           <Sheet>
