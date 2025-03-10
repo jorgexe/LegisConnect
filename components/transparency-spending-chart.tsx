@@ -1,74 +1,54 @@
 "use client"
 
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts"
+
+// Formateador para mostrar valores como millones de pesos
+const formatoPresupuesto = (value: number) => {
+  return `$${value.toLocaleString('es-MX')} millones`;
+}
 
 const data = [
-  { name: "Educación", value: 250, key: "educacion" },
-  { name: "Salud", value: 220, key: "salud" },
-  { name: "Infraestructura", value: 320, key: "infraestructura" },
-  { name: "Medio Ambiente", value: 150, key: "medioambiente" },
-  { name: "Programas Sociales", value: 185, key: "programassociales" },
-  { name: "Defensa", value: 110, key: "defensa" },
-  { name: "Otros", value: 75, key: "otros" },
+  { name: "Educación", value: 250, key: "educacion", color: "#2E86C1" },
+  { name: "Salud", value: 220, key: "salud", color: "#E74C3C" },
+  { name: "Infraestructura", value: 320, key: "infraestructura", color: "#F39C12" },
+  { name: "Medio Ambiente", value: 150, key: "medioambiente", color: "#27AE60" },
+  { name: "Programas Sociales", value: 185, key: "programassociales", color: "#8E44AD" },
+  { name: "Defensa", value: 110, key: "defensa", color: "#34495E" },
+  { name: "Otros", value: 75, key: "otros", color: "#7F8C8D" },
 ]
 
 export function TransparencySpendingChart() {
   return (
-    <ChartContainer
-      config={{
-        educacion: {
-          label: "Educación",
-          color: "hsl(var(--chart-1))",
-        },
-        salud: {
-          label: "Salud",
-          color: "hsl(var(--chart-2))",
-        },
-        infraestructura: {
-          label: "Infraestructura",
-          color: "hsl(var(--chart-3))",
-        },
-        medioambiente: {
-          label: "Medio Ambiente",
-          color: "hsl(var(--chart-4))",
-        },
-        programassociales: {
-          label: "Programas Sociales",
-          color: "hsl(var(--chart-5))",
-        },
-        defensa: {
-          label: "Defensa",
-          color: "hsl(var(--chart-6))",
-        },
-        otros: {
-          label: "Otros",
-          color: "hsl(var(--chart-7))",
-        },
-      }}
-      className="h-full"
-    >
+    <div className="h-[400px]">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            labelLine={false}
+            labelLine={true}
             outerRadius={150}
             fill="#8884d8"
             dataKey="value"
-            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={`var(--color-${entry.key})`} />
+              <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
-          <ChartTooltip content={<ChartTooltipContent />} />
-          <Legend />
+          <Tooltip formatter={formatoPresupuesto} />
+          <Legend 
+            layout="horizontal" 
+            verticalAlign="bottom" 
+            align="center" 
+            formatter={(value, entry, index) => <span style={{ color: data[index].color }}>{value}</span>} 
+          />
         </PieChart>
       </ResponsiveContainer>
-    </ChartContainer>
+      <div className="text-center mt-4 text-sm text-gray-500">
+        <p>Distribución del Presupuesto Nacional 2023 (en millones de pesos)</p>
+      </div>
+    </div>
   )
 }
 

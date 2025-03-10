@@ -6,39 +6,39 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 const data = [
   {
     name: "Medio Ambiente",
-    partyA: 85,
-    partyB: 65,
-    partyC: 45,
+    morena: 85,
+    pan: 65,
+    pri: 45,
   },
   {
     name: "Educación",
-    partyA: 75,
-    partyB: 70,
-    partyC: 60,
+    morena: 75,
+    pan: 70,
+    pri: 60,
   },
   {
     name: "Salud",
-    partyA: 80,
-    partyB: 55,
-    partyC: 50,
+    morena: 80,
+    pan: 55,
+    pri: 50,
   },
   {
     name: "Economía",
-    partyA: 60,
-    partyB: 85,
-    partyC: 70,
+    morena: 60,
+    pan: 85,
+    pri: 70,
   },
   {
     name: "Infraestructura",
-    partyA: 70,
-    partyB: 75,
-    partyC: 65,
+    morena: 70,
+    pan: 75,
+    pri: 65,
   },
   {
     name: "Programas Sociales",
-    partyA: 90,
-    partyB: 45,
-    partyC: 55,
+    morena: 90,
+    pan: 45,
+    pri: 55,
   },
 ]
 
@@ -46,17 +46,17 @@ export function TransparencyVotingChart() {
   return (
     <ChartContainer
       config={{
-        partyA: {
-          label: "Partido A",
-          color: "hsl(var(--chart-1))",
+        morena: {
+          label: "MORENA",
+          color: "#8B0000", // Color guinda/marrón rojizo
         },
-        partyB: {
-          label: "Partido B",
-          color: "hsl(var(--chart-2))",
+        pan: {
+          label: "PAN",
+          color: "#0047AB", // Color azul
         },
-        partyC: {
-          label: "Partido C",
-          color: "hsl(var(--chart-3))",
+        pri: {
+          label: "PRI",
+          color: "#006847", // Color verde
         },
       }}
       className="h-full"
@@ -76,9 +76,9 @@ export function TransparencyVotingChart() {
           <YAxis label={{ value: "Porcentaje de Apoyo %", angle: -90, position: "insideLeft" }} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <Legend />
-          <Bar dataKey="partyA" name="Partido A" fill="var(--color-partyA)" />
-          <Bar dataKey="partyB" name="Partido B" fill="var(--color-partyB)" />
-          <Bar dataKey="partyC" name="Partido C" fill="var(--color-partyC)" />
+          <Bar dataKey="morena" name="MORENA" fill="#8B0000" />
+          <Bar dataKey="pan" name="PAN" fill="#0047AB" />
+          <Bar dataKey="pri" name="PRI" fill="#006847" />
         </BarChart>
       </ResponsiveContainer>
     </ChartContainer>
