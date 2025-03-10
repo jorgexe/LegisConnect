@@ -81,22 +81,22 @@ export function MainNav() {
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden bg-transparent border-white/20">
                 <Menu className="h-5 w-5 text-white" />
-                <span className="sr-only">Toggle menu</span>
+                <span className="sr-only">Alternar menú</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-[#0D3B39] text-white">
               <nav className="flex flex-col gap-4 mt-8">
-                <Link href="/explore" className="text-sm font-medium transition-colors hover:text-primary">
-                  Explore Proposals
+                <Link href="/explore" className="text-sm font-medium transition-colors hover:text-[#C8A96A]">
+                  Explora Propuestas
                 </Link>
-                <Link href="/legislators" className="text-sm font-medium transition-colors hover:text-primary">
-                  Legislators
+                <Link href="/legislators" className="text-sm font-medium transition-colors hover:text-[#C8A96A]">
+                  Legisladores
                 </Link>
-                <Link href="/forums" className="text-sm font-medium transition-colors hover:text-primary">
-                  Forums
+                <Link href="/forums" className="text-sm font-medium transition-colors hover:text-[#C8A96A]">
+                  Foros
                 </Link>
-                <Link href="/transparency" className="text-sm font-medium transition-colors hover:text-primary">
-                  Transparency
+                <Link href="/transparency" className="text-sm font-medium transition-colors hover:text-[#C8A96A]">
+                  Transparencia
                 </Link>
                 <div className="flex flex-col gap-2 mt-4">
                   <Link href="/login" className="w-full">
@@ -104,11 +104,11 @@ export function MainNav() {
                       variant="outline"
                       className="bg-transparent text-white border-white hover:bg-white/10 w-full"
                     >
-                      Login
+                      Iniciar Sesión
                     </Button>
                   </Link>
                   <Link href="/register" className="w-full">
-                    <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] w-full">Register</Button>
+                    <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] w-full">Regístrate</Button>
                   </Link>
                 </div>
               </nav>
