@@ -15,7 +15,7 @@ export default function Home() {
         style={{ backgroundImage: 'url(/legisladores.png)', backgroundSize: 'cover' }}
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
         
         <div className="container mx-auto px-4 md:px-6 flex flex-col items-center text-center relative z-10">
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">Tu Voz en el Proceso Legislativo</h1>
