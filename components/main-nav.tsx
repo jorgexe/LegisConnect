@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image" // Add this import
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 
@@ -12,11 +13,19 @@ export function MainNav() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-[#0D3B39] text-white">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0D3B39] text-white">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="hidden font-bold sm:inline-block text-xl">LegisConnect</span>
+          <Link href="/" className="flex items-center">
+            {/* Replace text with logo image */}
+            <Image
+              src="/legisconnect-logo-nobg.png" 
+              alt="LegisConnect Logo"
+              width={140}
+              height={40}
+              className="h-8 md:h-10 w-auto"
+              priority
+            />
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link
