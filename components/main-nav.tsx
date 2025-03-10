@@ -19,7 +19,7 @@ export function MainNav() {
           <Link href="/" className="flex items-center">
             {/* Replace text with logo image */}
             <Image
-              src="/legisconnect-logo-nobg.png" 
+              src="/legisconnect-logo-symbol.png" 
               alt="LegisConnect Logo"
               width={140}
               height={40}

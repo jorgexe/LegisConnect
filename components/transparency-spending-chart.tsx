@@ -4,45 +4,45 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
 const data = [
-  { name: "Education", value: 250 },
-  { name: "Healthcare", value: 220 },
-  { name: "Infrastructure", value: 320 },
-  { name: "Environment", value: 150 },
-  { name: "Social Programs", value: 185 },
-  { name: "Defense", value: 110 },
-  { name: "Other", value: 75 },
+  { name: "Educación", value: 250, key: "educacion" },
+  { name: "Salud", value: 220, key: "salud" },
+  { name: "Infraestructura", value: 320, key: "infraestructura" },
+  { name: "Medio Ambiente", value: 150, key: "medioambiente" },
+  { name: "Programas Sociales", value: 185, key: "programassociales" },
+  { name: "Defensa", value: 110, key: "defensa" },
+  { name: "Otros", value: 75, key: "otros" },
 ]
 
 export function TransparencySpendingChart() {
   return (
     <ChartContainer
       config={{
-        education: {
-          label: "Education",
+        educacion: {
+          label: "Educación",
           color: "hsl(var(--chart-1))",
         },
-        healthcare: {
-          label: "Healthcare",
+        salud: {
+          label: "Salud",
           color: "hsl(var(--chart-2))",
         },
-        infrastructure: {
-          label: "Infrastructure",
+        infraestructura: {
+          label: "Infraestructura",
           color: "hsl(var(--chart-3))",
         },
-        environment: {
-          label: "Environment",
+        medioambiente: {
+          label: "Medio Ambiente",
           color: "hsl(var(--chart-4))",
         },
-        socialPrograms: {
-          label: "Social Programs",
+        programassociales: {
+          label: "Programas Sociales",
           color: "hsl(var(--chart-5))",
         },
-        defense: {
-          label: "Defense",
+        defensa: {
+          label: "Defensa",
           color: "hsl(var(--chart-6))",
         },
-        other: {
-          label: "Other",
+        otros: {
+          label: "Otros",
           color: "hsl(var(--chart-7))",
         },
       }}
@@ -61,7 +61,7 @@ export function TransparencySpendingChart() {
             label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
           >
             {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={`var(--color-${entry.name.toLowerCase().replace(" ", "")})`} />
+              <Cell key={`cell-${index}`} fill={`var(--color-${entry.key})`} />
             ))}
           </Pie>
           <ChartTooltip content={<ChartTooltipContent />} />
