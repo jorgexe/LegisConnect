@@ -91,7 +91,7 @@ export function MainNav() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="p-0 hover:bg-transparent flex items-center gap-2">
                   <Avatar className="h-9 w-9 border-2 border-[#C8A96A]">
-                    <AvatarImage src="/placeholder-user.jpg" alt="Juan López" />
+                    <AvatarImage src="/hombre3.png" alt="Juan López" />
                     <AvatarFallback className="bg-[#C8A96A] text-[#0D3B39]">JL</AvatarFallback>
                   </Avatar>
                   <span className="text-sm font-medium">Juan López</span>

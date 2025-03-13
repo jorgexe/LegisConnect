@@ -94,7 +94,7 @@ export default function Home() {
             <div className="space-y-1">
               <Link href="/dashboard" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-200">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder-user.jpg" alt="JL" />
+                  <AvatarImage src="/hombre3.png" alt="JL" />
                   <AvatarFallback className="bg-[#C8A96A] text-[#0D3B39]">JL</AvatarFallback>
                 </Avatar>
                 <span className="font-medium">Juan López</span>
@@ -168,7 +168,7 @@ export default function Home() {
           <CardContent className="pt-6">
             <div className="flex gap-3">
               <Avatar>
-                <AvatarImage src="/placeholder-user.jpg" alt="JL" />
+                <AvatarImage src="/hombre3.png" alt="JL" />
                 <AvatarFallback className="bg-[#C8A96A] text-[#0D3B39]">JL</AvatarFallback>
               </Avatar>
               <div className="flex-1 flex items-center">
