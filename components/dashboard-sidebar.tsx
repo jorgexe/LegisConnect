@@ -21,37 +21,37 @@ export function DashboardSidebar() {
 
   const routes = [
     {
-      title: "Dashboard",
+      title: "Panel de Control",
       icon: Home,
       href: "/dashboard",
     },
     {
-      title: "My Proposals",
+      title: "Mis Propuestas",
       icon: FileText,
       href: "/dashboard/proposals",
     },
     {
-      title: "Forums",
+      title: "Foros",
       icon: MessageSquare,
       href: "/dashboard/forums",
     },
     {
-      title: "Legislators",
+      title: "Legisladores",
       icon: Users,
       href: "/dashboard/legislators",
     },
     {
-      title: "Interactive Map",
+      title: "Mapa Interactivo",
       icon: Map,
       href: "/dashboard/map",
     },
     {
-      title: "Statistics",
+      title: "Estadísticas",
       icon: BarChart,
       href: "/dashboard/statistics",
     },
     {
-      title: "Settings",
+      title: "Configuración",
       icon: Settings,
       href: "/dashboard/settings",
     },
@@ -94,8 +94,8 @@ export function DashboardSidebar() {
               <span className="text-[#0D3B39] font-bold">JD</span>
             </div>
             <div>
-              <p className="font-medium">John Doe</p>
-              <p className="text-xs text-gray-500">Citizen</p>
+              <p className="font-medium">Juan Lopez</p>
+              <p className="text-xs text-gray-500">Ciudadano</p>
             </div>
           </div>
         </SidebarFooter>

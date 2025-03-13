@@ -10,13 +10,11 @@ import { DashboardSidebar } from "@/components/dashboard-sidebar"
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-[#E1D7C1]">
-      <DashboardSidebar />
-
-      <div className="flex-1">
-        <div className="container py-6">
+      <div className="flex-1 overflow-auto">
+        <div className="container py-6 px-4 md:px-6 max-w-6xl mx-auto">
           <header className="mb-6">
             <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold text-[#0D3B39]">Dashboard</h1>
+              <h1 className="text-3xl font-bold text-[#0D3B39]">Panel de Control</h1>
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <Bell className="h-6 w-6 text-gray-600" />
@@ -26,7 +24,7 @@ export default function Dashboard() {
                 </div>
                 <Button variant="outline" className="gap-2">
                   <Settings className="h-4 w-4" />
-                  <span>Settings</span>
+                  <span>Configuración</span>
                 </Button>
               </div>
             </div>
@@ -35,7 +33,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-gray-500">My Proposals</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-500">Mis Propuestas</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">3</div>
@@ -43,7 +41,7 @@ export default function Dashboard() {
             </Card>
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-gray-500">Followed Proposals</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-500">Propuestas Seguidas</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">12</div>
@@ -51,7 +49,7 @@ export default function Dashboard() {
             </Card>
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm font-medium text-gray-500">Forum Contributions</CardTitle>
+                <CardTitle className="text-sm font-medium text-gray-500">Contribuciones en Foros</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">28</div>
@@ -61,49 +59,49 @@ export default function Dashboard() {
 
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-[#0D3B39]">Quick Actions</h2>
+              <h2 className="text-xl font-bold text-[#0D3B39]">Acciones Rápidas</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               <Button className="h-auto py-6 bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A] flex flex-col items-center gap-2">
                 <FileText className="h-6 w-6" />
-                <span>Create Proposal</span>
+                <span>Crear Propuesta</span>
               </Button>
               <Button
                 variant="outline"
                 className="h-auto py-6 border-[#C8A96A] text-[#0D3B39] hover:bg-[#C8A96A]/10 flex flex-col items-center gap-2"
               >
                 <MessageSquare className="h-6 w-6" />
-                <span>Join Discussion</span>
+                <span>Unirse a Discusión</span>
               </Button>
               <Button
                 variant="outline"
                 className="h-auto py-6 border-[#C8A96A] text-[#0D3B39] hover:bg-[#C8A96A]/10 flex flex-col items-center gap-2"
               >
                 <Users className="h-6 w-6" />
-                <span>Find Legislators</span>
+                <span>Buscar Legisladores</span>
               </Button>
               <Button
                 variant="outline"
                 className="h-auto py-6 border-[#C8A96A] text-[#0D3B39] hover:bg-[#C8A96A]/10 flex flex-col items-center gap-2"
               >
                 <Search className="h-6 w-6" />
-                <span>Explore Proposals</span>
+                <span>Explorar Propuestas</span>
               </Button>
             </div>
           </div>
 
           <Tabs defaultValue="activity">
             <TabsList className="bg-white">
-              <TabsTrigger value="activity">Recent Activity</TabsTrigger>
-              <TabsTrigger value="proposals">My Proposals</TabsTrigger>
-              <TabsTrigger value="following">Following</TabsTrigger>
+              <TabsTrigger value="activity">Actividad Reciente</TabsTrigger>
+              <TabsTrigger value="proposals">Mis Propuestas</TabsTrigger>
+              <TabsTrigger value="following">Siguiendo</TabsTrigger>
             </TabsList>
 
             <TabsContent value="activity" className="mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Recent Activity</CardTitle>
-                  <CardDescription>Your latest interactions on the platform</CardDescription>
+                  <CardTitle>Actividad Reciente</CardTitle>
+                  <CardDescription>Tus últimas interacciones en la plataforma</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -114,15 +112,15 @@ export default function Dashboard() {
                         </div>
                         <div>
                           <p className="font-medium">
-                            You commented on{" "}
+                            Comentaste en{" "}
                             <Link href="#" className="text-[#0D3B39] font-bold hover:underline">
-                              Renewable Energy Initiative
+                              Iniciativa de Energía Renovable
                             </Link>
                           </p>
                           <p className="text-sm text-gray-500 mt-1">
-                            "I think this proposal needs to consider the impact on rural communities..."
+                            "Creo que esta propuesta debe considerar el impacto en comunidades rurales..."
                           </p>
-                          <p className="text-xs text-gray-400 mt-2">2 days ago</p>
+                          <p className="text-xs text-gray-400 mt-2">Hace 2 días</p>
                         </div>
                       </div>
                     ))}
@@ -130,7 +128,7 @@ export default function Dashboard() {
                 </CardContent>
                 <CardFooter>
                   <Button variant="outline" className="w-full">
-                    View All Activity
+                    Ver Toda la Actividad
                   </Button>
                 </CardFooter>
               </Card>
@@ -140,12 +138,12 @@ export default function Dashboard() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
                   <div>
-                    <CardTitle>My Proposals</CardTitle>
-                    <CardDescription>Proposals you've created</CardDescription>
+                    <CardTitle>Mis Propuestas</CardTitle>
+                    <CardDescription>Propuestas que has creado</CardDescription>
                   </div>
                   <Button className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
                     <Plus className="mr-2 h-4 w-4" />
-                    New Proposal
+                    Nueva Propuesta
                   </Button>
                 </CardHeader>
                 <CardContent>
@@ -154,29 +152,28 @@ export default function Dashboard() {
                       <Card key={i} className="overflow-hidden">
                         <CardHeader className="pb-3">
                           <div className="flex justify-between items-start">
-                            <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">Education</Badge>
+                            <Badge className="bg-[#C8A96A] hover:bg-[#BF9C5A]">Educación</Badge>
                             <Badge variant="outline" className="text-gray-500 bg-transparent">
-                              Draft
+                              Borrador
                             </Badge>
                           </div>
-                          <CardTitle className="text-xl mt-3">Digital Literacy Program {i}</CardTitle>
+                          <CardTitle className="text-xl mt-3">Programa de Alfabetización Digital {i}</CardTitle>
                           <CardDescription className="line-clamp-2">
-                            A proposal to implement comprehensive digital literacy programs in public schools to prepare
-                            students for the digital economy.
+                            Una propuesta para implementar programas integrales de alfabetización digital en escuelas públicas para preparar a los estudiantes para la economía digital.
                           </CardDescription>
                         </CardHeader>
                         <CardContent className="text-sm text-gray-500">
                           <div className="flex items-center justify-between text-xs">
-                            <span>Created 1 week ago</span>
-                            <span>Last edited 2 days ago</span>
+                            <span>Creado hace 1 semana</span>
+                            <span>Última edición hace 2 días</span>
                           </div>
                         </CardContent>
                         <CardFooter className="pt-3 border-t flex justify-between">
                           <Button variant="ghost" size="sm" className="text-[#0D3B39]">
-                            Edit
+                            Editar
                           </Button>
                           <Button variant="outline" size="sm" className="text-[#0D3B39] border-[#C8A96A]">
-                            Publish
+                            Publicar
                           </Button>
                         </CardFooter>
                       </Card>
@@ -185,7 +182,7 @@ export default function Dashboard() {
                 </CardContent>
                 <CardFooter>
                   <Button variant="outline" className="w-full">
-                    View All Proposals
+                    Ver Todas las Propuestas
                   </Button>
                 </CardFooter>
               </Card>
@@ -194,8 +191,8 @@ export default function Dashboard() {
             <TabsContent value="following" className="mt-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Proposals You're Following</CardTitle>
-                  <CardDescription>Stay updated on proposals that interest you</CardDescription>
+                  <CardTitle>Propuestas que Sigues</CardTitle>
+                  <CardDescription>Mantente actualizado en propuestas que te interesan</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -206,19 +203,18 @@ export default function Dashboard() {
                         </div>
                         <div className="flex-1">
                           <div className="flex justify-between">
-                            <p className="font-medium">Urban Green Spaces Initiative {i}</p>
+                            <p className="font-medium">Iniciativa de Espacios Verdes Urbanos {i}</p>
                             <Badge variant="outline" className="text-gray-500 bg-transparent">
-                              In Review
+                              En Revisión
                             </Badge>
                           </div>
                           <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                            A proposal to increase urban green spaces by 20% in all major cities through public-private
-                            partnerships.
+                            Una propuesta para aumentar los espacios verdes urbanos en un 20% en todas las ciudades principales a través de alianzas público-privadas.
                           </p>
                           <div className="flex items-center mt-2 text-xs text-gray-400">
-                            <span>By Rep. Juan Martinez</span>
+                            <span>Por Diputado Juan Martínez</span>
                             <span className="mx-2">•</span>
-                            <span>Updated 3 days ago</span>
+                            <span>Actualizado hace 3 días</span>
                           </div>
                         </div>
                       </div>
@@ -227,7 +223,7 @@ export default function Dashboard() {
                 </CardContent>
                 <CardFooter>
                   <Button variant="outline" className="w-full">
-                    View All Following
+                    Ver Todos los Seguimientos
                   </Button>
                 </CardFooter>
               </Card>
