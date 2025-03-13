@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import {
   ArrowLeft,
@@ -12,6 +15,9 @@ import {
   ThumbsUp,
   User,
   FileText,
+  Loader2,
+  AlertCircle,
+  Bell
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -20,8 +26,40 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
 
 export default function ProposalDetail() {
+  const [statusRequestOpen, setStatusRequestOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [selectedEvent, setSelectedEvent] = useState<string | null>(null)
+  
+  const handleOpenStatusRequest = (title: string) => {
+    setSelectedEvent(title)
+    setStatusRequestOpen(true)
+  }
+  
+  const handleSubmitStatusRequest = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    // Simular envío de solicitud
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setStatusRequestOpen(false)
+      setShowSuccess(true)
+      
+      // Ocultar mensaje de éxito después de 5 segundos
+      setTimeout(() => {
+        setShowSuccess(false)
+      }, 5000)
+    }, 1500)
+  }
+
   return (
     <div className="min-h-screen bg-[#E1D7C1]">
       <div className="container py-8">
@@ -221,22 +259,38 @@ export default function ProposalDetail() {
                           <div>
                             <p className="text-sm text-gray-500">{event.date}</p>
                             <h4 className="font-bold">{event.title}</h4>
-                            <Badge
-                              className={
-                                event.status === "Completado"
-                                  ? "bg-green-500"
-                                  : event.status === "En Progreso"
-                                    ? "bg-[#C8A96A]"
+                            {event.status === "En Progreso" ? (
+                              <Badge
+                                className="bg-[#C8A96A] hover:bg-[#BF9C5A] cursor-pointer"
+                                onClick={() => handleOpenStatusRequest(event.title)}
+                              >
+                                {event.status}
+                              </Badge>
+                            ) : (
+                              <Badge
+                                className={
+                                  event.status === "Completado"
+                                    ? "bg-green-500"
                                     : "bg-gray-400"
-                              }
-                            >
-                              {event.status}
-                            </Badge>
+                                }
+                              >
+                                {event.status}
+                              </Badge>
+                            )}
                             {event.status === "En Progreso" && (
-                              <p className="mt-2 text-sm">
-                                La propuesta está siendo revisada actualmente por el Comité de Energía y Medio Ambiente. Una
-                                audiencia pública está programada para el 12 de abril de 2023.
-                              </p>
+                              <div className="mt-2 text-sm">
+                                <p>
+                                  La propuesta está siendo revisada actualmente por el Comité de Energía y Medio Ambiente. Una
+                                  audiencia pública está programada para el 12 de abril de 2023.
+                                </p>
+                                <Button 
+                                  variant="link" 
+                                  className="p-0 mt-2 h-auto text-[#0D3B39] hover:text-[#0D3B39]/80 font-medium"
+                                  onClick={() => handleOpenStatusRequest(event.title)}
+                                >
+                                  Solicitar más información →
+                                </Button>
+                              </div>
                             )}
                           </div>
                         </div>
@@ -338,6 +392,111 @@ export default function ProposalDetail() {
           </div>
         </div>
       </div>
+
+      {/* Modal de solicitud de estado */}
+      <Dialog open={statusRequestOpen} onOpenChange={setStatusRequestOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Solicitar actualización de estado</DialogTitle>
+            <DialogDescription>
+              {selectedEvent && `Solicitar más información sobre la etapa "${selectedEvent}"`}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <form onSubmit={handleSubmitStatusRequest} className="space-y-4">
+            <div>
+              <label htmlFor="reason" className="block text-sm font-medium mb-1">
+                Motivo de la solicitud
+              </label>
+              <Select required>
+                <SelectTrigger>
+                  <SelectValue placeholder="Seleccione un motivo" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="update">Actualización general</SelectItem>
+                  <SelectItem value="progress">Información sobre avances</SelectItem>
+                  <SelectItem value="timeline">Cambios en cronograma</SelectItem>
+                  <SelectItem value="concerns">Dudas específicas</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-1">
+                Mensaje (opcional)
+              </label>
+              <Textarea 
+                id="message"
+                placeholder="Detalle su solicitud o incluya preguntas específicas"
+                rows={4}
+              />
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <Checkbox id="notification" defaultChecked />
+              <label htmlFor="notification" className="text-sm">
+                Recibir notificaciones sobre actualizaciones de esta propuesta
+              </label>
+            </div>
+            
+            <DialogFooter>
+              <Button 
+                variant="outline" 
+                type="button"
+                onClick={() => setStatusRequestOpen(false)}
+                disabled={isSubmitting}
+              >
+                Cancelar
+              </Button>
+              <Button 
+                type="submit" 
+                className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Enviando...
+                  </>
+                ) : (
+                  'Enviar solicitud'
+                )}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+      
+      {/* Mensaje de éxito */}
+      {showSuccess && (
+        <div className="fixed bottom-6 right-6 max-w-sm">
+          <Alert className="bg-green-50 border-green-500">
+            <div className="flex items-start">
+              <div className="flex-shrink-0">
+                <div className="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                  <Bell className="h-5 w-5 text-green-600" />
+                </div>
+              </div>
+              <div className="ml-3">
+                <AlertTitle className="text-green-800 font-semibold">
+                  Solicitud enviada con éxito
+                </AlertTitle>
+                <AlertDescription className="text-green-700 mt-1 text-sm">
+                  Recibirás una notificación cuando se actualice el estado de esta propuesta.
+                </AlertDescription>
+              </div>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="ml-auto -mt-1 text-gray-500" 
+                onClick={() => setShowSuccess(false)}
+              >
+                ×
+              </Button>
+            </div>
+          </Alert>
+        </div>
+      )}
     </div>
   )
 }

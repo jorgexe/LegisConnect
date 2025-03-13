@@ -141,7 +141,7 @@ export function ChatbotAssistant() {
         onClick={() => setChatOpen(!chatOpen)}
         size="lg"
         className={`rounded-full h-14 w-14 shadow-lg ${
-          chatOpen ? "bg-red-500 hover:bg-red-600" : "bg-[#0D3B39] hover:bg-[#0D3B39]/90"
+          chatOpen ? "bg-green-500 hover:bg-green-600" : "bg-[#0D3B39] hover:bg-[#0D3B39]/90"
         }`}
       >
         {chatOpen ? (
