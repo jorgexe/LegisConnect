@@ -19,17 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <div className="flex min-h-screen flex-col bg-background">
-            <MainNav />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          
-          {/* El chatbot se coloca fuera del flujo principal pero dentro de ThemeProvider */}
-          <ChatbotAssistant />
+          {children}
         </ThemeProvider>
       </body>
     </html>
