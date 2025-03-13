@@ -2,9 +2,10 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Link from "next/link"
-import { Eye, EyeOff, User, Building, Users, Mail, Lock, AlertCircle, Info, Check } from "lucide-react"
+import Image from "next/image"
+import { Eye, EyeOff, User, Building, Users, Mail, Lock, AlertCircle, Info, Check, Camera, Upload, Loader } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -29,6 +30,16 @@ export default function RegisterPage() {
   const [registrationStep, setRegistrationStep] = useState(1)
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [registrationComplete, setRegistrationComplete] = useState(false)
+  
+  // Estados para el escaneo de INE
+  const [ineImage, setIneImage] = useState<string | null>(null)
+  const [isScanning, setIsScanning] = useState(false)
+  const [scanProgress, setScanProgress] = useState(0)
+  const [scanComplete, setScanComplete] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const streamRef = useRef<MediaStream | null>(null)
+  const [cameraActive, setCameraActive] = useState(false)
 
   // Function to check password strength
   const checkPasswordStrength = (password: string) => {
@@ -47,6 +58,107 @@ export default function RegisterPage() {
     checkPasswordStrength(newPassword)
   }
 
+  // Funciones para el escaneo de INE
+  const handleOpenCamera = async () => {
+    try {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(track => track.stop());
+      }
+      
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { facingMode: "environment" }
+      });
+      
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        streamRef.current = stream;
+        setCameraActive(true);
+      }
+    } catch (err) {
+      setError("No se pudo acceder a la cámara. Por favor, verifica los permisos.");
+      console.error("Error al acceder a la cámara:", err);
+    }
+  };
+
+  const handleCloseCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current = null;
+      setCameraActive(false);
+    }
+  };
+
+  const handleCaptureImage = () => {
+    if (videoRef.current) {
+      setIsScanning(true);
+      
+      // Simular progreso de escaneo
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 5;
+        setScanProgress(progress);
+        
+        if (progress >= 100) {
+          clearInterval(interval);
+          
+          // Capturar imagen del video
+          const canvas = document.createElement('canvas');
+          canvas.width = videoRef.current!.videoWidth;
+          canvas.height = videoRef.current!.videoHeight;
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(videoRef.current!, 0, 0, canvas.width, canvas.height);
+          
+          // Convertir a base64 y guardar
+          const imageData = canvas.toDataURL('image/jpeg');
+          setIneImage(imageData);
+          
+          // Finalizar escaneo
+          setIsScanning(false);
+          setScanComplete(true);
+          handleCloseCamera();
+          
+          // Mostrar mensaje de éxito por 2 segundos
+          setTimeout(() => {
+            setScanComplete(true);
+          }, 2000);
+        }
+      }, 50);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setIsScanning(true);
+      
+      // Simular progreso de escaneo
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 5;
+        setScanProgress(progress);
+        
+        if (progress >= 100) {
+          clearInterval(interval);
+          
+          // Leer el archivo como URL de datos
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            if (event.target?.result) {
+              setIneImage(event.target.result as string);
+              setIsScanning(false);
+              setScanComplete(true);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      }, 50);
+    }
+  };
+  
+  const handleTriggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
   const handleNextStep = () => {
     // Validate current step
     if (registrationStep === 1) {
@@ -55,9 +167,15 @@ export default function RegisterPage() {
         return
       }
     } else if (registrationStep === 2) {
-      if (userType === "citizen" && (!firstName || !lastName)) {
-        setError("Por favor, proporcione su nombre")
-        return
+      if (userType === "citizen") {
+        if (!firstName || !lastName) {
+          setError("Por favor, proporcione su nombre completo")
+          return
+        }
+        if (!ineImage) {
+          setError("Por favor, escanee su credencial de elector (INE)")
+          return
+        }
       }
       if (userType === "organization" && !orgName) {
         setError("Por favor, proporcione el nombre de su organización")
@@ -335,26 +453,209 @@ export default function RegisterPage() {
                     </div>
 
                     {(userType === "citizen" || userType === "legislator") && (
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="first-name">Nombre</Label>
-                          <Input
-                            id="first-name"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            required
-                          />
+                      <>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="first-name">Nombre</Label>
+                            <Input
+                              id="first-name"
+                              value={firstName}
+                              onChange={(e) => setFirstName(e.target.value)}
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="last-name">Apellido</Label>
+                            <Input
+                              id="last-name"
+                              value={lastName}
+                              onChange={(e) => setLastName(e.target.value)}
+                              required
+                            />
+                          </div>
                         </div>
+                        
+                        {/* Escáner de INE */}
                         <div className="space-y-2">
-                          <Label htmlFor="last-name">Apellido</Label>
-                          <Input
-                            id="last-name"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            required
-                          />
+                          <Label htmlFor="ine-scan">Credencial de Elector (INE)</Label>
+                          
+                          {!ineImage && !isScanning && !cameraActive && (
+                            <div className="border-2 border-dashed rounded-md p-4 bg-white flex flex-col items-center justify-center gap-4">
+                              <div className="bg-[#C8A96A]/20 rounded-full p-4">
+                                <Camera className="h-8 w-8 text-[#0D3B39]" />
+                              </div>
+                              <div className="text-center">
+                                <p className="text-sm text-gray-500 mb-2">
+                                  Para verificar tu identidad, necesitamos una foto de tu credencial de elector
+                                </p>
+                                <div className="flex flex-col sm:flex-row justify-center gap-2">
+                                  <Button
+                                    type="button"
+                                    className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]"
+                                    onClick={handleOpenCamera}
+                                  >
+                                    <Camera className="mr-2 h-4 w-4" />
+                                    Tomar foto
+                                  </Button>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    onClick={handleTriggerFileInput}
+                                  >
+                                    <Upload className="mr-2 h-4 w-4" />
+                                    Subir archivo
+                                  </Button>
+                                  <input
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={handleFileChange}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Vista de cámara con botón mejorado */}
+                          {cameraActive && !isScanning && (
+                            <div className="rounded-md overflow-hidden relative">
+                              <video 
+                                ref={videoRef}
+                                autoPlay 
+                                playsInline
+                                className="w-full h-auto"
+                                style={{ maxHeight: '300px', objectFit: 'cover' }}
+                              />
+                              
+                              {/* Overlay con guías de posicionamiento */}
+                              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div className="border-4 border-[#C8A96A] rounded-md w-5/6 h-4/5 flex items-center justify-center">
+                                  <div className="text-white text-xs bg-black/50 px-3 py-1 rounded-full">
+                                    Coloca tu INE dentro del marco
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              {/* Controles */}
+                              <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 flex justify-between items-center">
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  onClick={handleCloseCamera}
+                                  className="text-white border-white hover:bg-white/20"
+                                >
+                                  Cancelar
+                                </Button>
+                                
+                                {/* Botón de captura estilo cámara */}
+                                <div className="relative">
+                                  <Button
+                                    type="button"
+                                    onClick={handleCaptureImage}
+                                    className="h-12 w-12 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center p-0 border-2 border-[#C8A96A] transition-transform hover:scale-105 active:scale-95"
+                                  >
+                                    <div className="h-10 w-10 rounded-full border-2 border-[#0D3B39]"></div>
+                                  </Button>
+                                </div>
+                                
+                                {/* Espacio para equilibrar el layout */}
+                                <div className="w-20"></div>
+                              </div>
+                              
+                              {/* Indicaciones y efectos visuales */}
+                              <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/70 to-transparent p-3">
+                                <p className="text-white text-sm font-medium text-center">
+                                  Verificación de Credencial de Elector
+                                </p>
+                              </div>
+                              
+                              {/* Esquinas de referencia */}
+                              <div className="absolute top-6 left-8 w-8 h-8 border-t-4 border-l-4 border-white/80"></div>
+                              <div className="absolute top-6 right-8 w-8 h-8 border-t-4 border-r-4 border-white/80"></div>
+                              <div className="absolute bottom-16 left-8 w-8 h-8 border-b-4 border-l-4 border-white/80"></div>
+                              <div className="absolute bottom-16 right-8 w-8 h-8 border-b-4 border-r-4 border-white/80"></div>
+                            </div>
+                          )}
+                          
+                          {/* Animación de escaneo mejorada */}
+                          {isScanning && (
+                            <div className="border-2 rounded-md p-6 bg-white flex flex-col items-center justify-center gap-4">
+                              <div className="w-full max-w-xs">
+                                <div className="flex justify-between mb-1 text-sm font-medium">
+                                  <span>Escaneando credencial</span>
+                                  <span>{scanProgress}%</span>
+                                </div>
+                                <Progress value={scanProgress} className="h-3 bg-gray-100">
+                                  <div 
+                                    className="h-full bg-gradient-to-r from-[#C8A96A] to-[#0D3B39] rounded-full transition-all duration-300"
+                                    style={{ width: `${scanProgress}%` }}
+                                  />
+                                </Progress>
+                              </div>
+                              <div className="flex flex-col items-center gap-4 text-sm">
+                                <div className="relative w-full max-w-xs h-12 bg-gray-50 rounded-md overflow-hidden">
+                                  <div 
+                                    className="absolute inset-y-0 left-0 bg-[#C8A96A]/20 flex items-center justify-center"
+                                    style={{ width: `${scanProgress}%` }}
+                                  >
+                                    <Loader className="h-5 w-5 text-[#0D3B39] animate-spin" />
+                                  </div>
+                                </div>
+                                <div className="text-center space-y-1">
+                                  <p className="font-medium text-[#0D3B39]">Verificando información...</p>
+                                  <p className="text-xs text-gray-500">
+                                    {scanProgress < 30 ? "Analizando documento..." : 
+                                     scanProgress < 60 ? "Extrayendo datos personales..." : 
+                                     scanProgress < 90 ? "Verificando autenticidad..." :
+                                     "¡Validación completa!"}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Imagen capturada */}
+                          {ineImage && !isScanning && (
+                            <div className="border-2 rounded-md p-4 bg-white">
+                              <div className="flex flex-col sm:flex-row gap-4 items-center">
+                                <div className="relative w-48 h-32 overflow-hidden rounded-md border">
+                                  <Image 
+                                    src={ineImage} 
+                                    alt="Credencial INE" 
+                                    fill 
+                                    className="object-cover"
+                                  />
+                                </div>
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2 text-green-600 mb-2">
+                                    <Check className="h-5 w-5" />
+                                    <span className="font-medium">Credencial verificada</span>
+                                  </div>
+                                  <p className="text-sm text-gray-500 mb-3">
+                                    Tu credencial de elector ha sido escaneada correctamente. Esta información se utilizará únicamente para verificar tu identidad.
+                                  </p>
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => {
+                                      setIneImage(null);
+                                      setScanComplete(false);
+                                    }}
+                                  >
+                                    Volver a escanear
+                                  </Button>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          <p className="text-xs text-gray-500 mt-2">
+                            Tu información será tratada de forma confidencial y segura, de acuerdo con nuestra política de privacidad
+                          </p>
                         </div>
-                      </div>
+                      </>
                     )}
 
                     {userType === "organization" && (
@@ -398,6 +699,14 @@ export default function RegisterPage() {
                           <div className="flex">
                             <dt className="w-1/3 font-medium text-gray-500">Organización:</dt>
                             <dd>{orgName}</dd>
+                          </div>
+                        )}
+                        {(userType === "citizen" || userType === "legislator") && ineImage && (
+                          <div className="flex">
+                            <dt className="w-1/3 font-medium text-gray-500">Verificación INE:</dt>
+                            <dd className="text-green-600 flex items-center gap-1">
+                              <Check className="h-4 w-4" /> Completada
+                            </dd>
                           </div>
                         )}
                       </dl>

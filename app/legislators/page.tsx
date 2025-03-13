@@ -1,5 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
-import { Filter, Mail, MapPin, Search } from "lucide-react"
+import { Filter, Mail, MapPin, Search, X, CheckCircle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,9 +10,47 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function LegislatorsDirectory() {
-  // Datos de legisladores
+  const [openContactDialog, setOpenContactDialog] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [contactForm, setContactForm] = useState({
+    subject: "",
+    message: ""
+  });
+  const [selectedLegislator, setSelectedLegislator] = useState<any>(null);
+  
+  const handleContactClick = (legislator: any) => {
+    setSelectedLegislator(legislator);
+    setContactForm({ subject: "", message: "" });
+    setOpenContactDialog(true);
+  };
+
+  const handleSubmitContact = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aquí se enviaría el mensaje en una implementación real
+    
+    // Simular envío exitoso
+    setOpenContactDialog(false);
+    setShowSuccess(true);
+    
+    // Cerrar mensaje de éxito después de 3 segundos
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
+  };
+
+  // Array de legisladores y configuración de colores (mantener del código original)
   const legislators = [
     {
       name: "María García",
@@ -121,7 +162,6 @@ export default function LegislatorsDirectory() {
     }
   ];
 
-  // Colores para los partidos políticos
   const partyColors: { [key: string]: string } = {
     "MORENA": "bg-[#8B0000]",
     "PAN": "bg-[#0047AB]",
@@ -292,7 +332,12 @@ export default function LegislatorsDirectory() {
                       </div>
                     </div>
                     <div className="flex gap-2 w-full">
-                      <Button variant="outline" size="sm" className="flex-1">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => handleContactClick(legislator)}
+                      >
                         <Mail className="h-4 w-4 mr-1" /> Contactar
                       </Button>
                       <Button className="flex-1 bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">Ver Perfil</Button>
@@ -310,6 +355,87 @@ export default function LegislatorsDirectory() {
           </div>
         </div>
       </div>
+      
+      {/* Diálogo de formulario de contacto */}
+      <Dialog open={openContactDialog} onOpenChange={setOpenContactDialog}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Contactar a {selectedLegislator?.prefix} {selectedLegislator?.name}</DialogTitle>
+            <DialogDescription>
+              Envía un mensaje directo a tu legislador. Tu mensaje será revisado y respondido a la brevedad.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSubmitContact}>
+            <div className="grid gap-4 py-4">
+              <div className="flex items-center gap-4">
+                <div className="h-12 w-12 rounded-full overflow-hidden relative">
+                  {selectedLegislator && (
+                    <Image
+                      src={selectedLegislator.image}
+                      alt={selectedLegislator.name}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+                <div>
+                  <p className="font-medium">{selectedLegislator?.prefix} {selectedLegislator?.name}</p>
+                  <p className="text-sm text-gray-500">{selectedLegislator?.role} • {selectedLegislator?.party}</p>
+                </div>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="subject">Asunto</Label>
+                <Input 
+                  id="subject" 
+                  placeholder="Escribe el asunto de tu mensaje" 
+                  value={contactForm.subject}
+                  onChange={(e) => setContactForm({...contactForm, subject: e.target.value})}
+                  required
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="message">Mensaje</Label>
+                <Textarea 
+                  id="message" 
+                  placeholder="Escribe tu mensaje aquí..." 
+                  rows={5}
+                  value={contactForm.message}
+                  onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                  required
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setOpenContactDialog(false)}>
+                Cancelar
+              </Button>
+              <Button type="submit" className="bg-[#C8A96A] text-[#0D3B39] hover:bg-[#BF9C5A]">
+                Enviar Mensaje
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+      
+      {/* Notificación de éxito */}
+      {showSuccess && (
+        <div className="fixed bottom-6 right-6 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-in fade-in slide-in-from-bottom-5 z-50">
+          <CheckCircle className="h-5 w-5" />
+          <div>
+            <p className="font-medium">¡Mensaje enviado correctamente!</p>
+            <p className="text-sm opacity-90">Tu legislador recibirá tu mensaje pronto.</p>
+          </div>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="ml-2 text-white hover:bg-green-700" 
+            onClick={() => setShowSuccess(false)}
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

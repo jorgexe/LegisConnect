@@ -41,7 +41,7 @@ export default function LoginPage() {
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       // Redirect to dashboard after successful login
-      window.location.href = "/dashboard"
+      window.location.href = "/"
     } catch (err) {
       setError("Email o contraseña incorrectos. Por favor, inténtelo de nuevo.")
     } finally {
